@@ -11,10 +11,8 @@
     </head>
 
     <body>
-        <div class="d-flex vh-100">
-            @include('navigation')
-
-            <div class="container py-4 d-flex flex-column justify-content-center">
+        <div class="d-flex justify-content-center align-items-center vh-100" style="background-image: url({{ asset('images/studio.jpg') }}); background-size: cover">
+            <div class="p-5 bg-light rounded w-50 text-center">
                 @yield('content')
             </div>
         </div>
