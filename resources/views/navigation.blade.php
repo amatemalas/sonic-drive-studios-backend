@@ -1,4 +1,4 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-dark col-2 text-white">
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-dark col-2 text-white navigation">
     <a href="{{ route('backend.index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none position-relative">
         <span class="fs-4 text-center">
             <img class="mw-100 w-75" src="{{ asset('images/logo-white.png') }}" alt="">

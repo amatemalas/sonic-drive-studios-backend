@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <div class="d-flex vh-100">
+        <div class="d-flex vh-100 main">
             @include('navigation')
 
             <div class="container py-4 d-flex flex-column justify-content-center">
