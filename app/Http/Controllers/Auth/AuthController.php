@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -11,6 +12,10 @@ class AuthController extends Controller
 {
     public function index()
     {
+        if (auth()->check()) {
+            return redirect()->route('backend.index');
+        }
+
         return view('auth.login');
     }
 
@@ -60,11 +65,15 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        if(Auth::check()){
-            return view('backend.index');
+        if(!Auth::check()){
+            return redirect("login")->withSuccess('You are not allowed to access');
         }
 
-        return redirect("login")->withSuccess('You are not allowed to access');
+        $notifications = Contact::where('is_read', 0)->get()->count();
+
+        session()->put('notifications', $notifications);
+
+        return view('backend.index', compact('notifications'));
     }
 
     public function signOut() {

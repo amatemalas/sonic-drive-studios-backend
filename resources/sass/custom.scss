@@ -17,3 +17,25 @@
 .btn-primary {
     color: white !important;
 }
+
+.btn-outline-primary {
+    &:hover {
+        color: white !important;
+    }
+}
+
+#js-image-preview {
+    max-width: 200px;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.table {
+    td {
+        vertical-align: middle;
+    }
+}

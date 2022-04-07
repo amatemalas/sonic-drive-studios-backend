@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -87,10 +86,9 @@ class UserController extends Controller
 
             DB::beginTransaction();
 
-//            $request->validate([
-//                'email' => 'email',
-//                'password' => 'min:6',
-//            ]);
+            $request->validate([
+                'email' => 'required|email',
+            ]);
 
             $data = $request->all();
 
@@ -113,7 +111,7 @@ class UserController extends Controller
             }
 
             if ($request->hasFile('image')) {
-                $data['image'] = $request->file('image')->store('');
+                $data['image'] = $request->file('image')->store('public');
             }
 
 
@@ -121,7 +119,7 @@ class UserController extends Controller
 
             DB::commit();
 
-            return redirect("profile")->withSuccess('Usuario editado');
+            return redirect("profile")->with('status-message', 'Usuario editado')->with('status', 'success');
 
         } catch (\Exception $e) {
             DB::rollBack();

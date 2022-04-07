@@ -20,7 +20,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('users.update', ['user' => $user]) }}" method="post">
+    <form action="{{ route('users.update', ['user' => $user]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -33,10 +33,10 @@
             <input class="form-control" placeholder="Confirm password" type="password" name="confirm_password" id="confirm_password">
         </div>
         <div class="mb-3">
-            <input class="form-control" value="{{ $user->image }}" type="file" name="image" id="js-image">
+            <input class="form-control mb-3" value="{{ $user->image }}" type="file" name="image" id="js-image">
 
             @if($user->image)
-                <img id="js-image-preview" src="{{ asset('storage/' .  $user->image) }}" />
+                <img class="rounded" id="js-image-preview" src="{{ $user->path }}" />
             @endif
         </div>
         <input class="btn btn-primary" type="submit" value="Guardar">

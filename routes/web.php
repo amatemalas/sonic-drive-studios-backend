@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 
 
     /*
@@ -32,4 +33,9 @@ Route::controller(UserController::class)->group(function () {
 });
 
 Route::resource('users', UserController::class);
+Route::resource('contacts', ContactController::class);
+
+Route::prefix('/data')->group(function () {
+//    Route::get('contacts', [ContactController::class, 'data'])->name('data.contacts');
+});
 

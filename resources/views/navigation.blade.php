@@ -25,9 +25,18 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link link-light">
+            @php
+                $notifications = \App\Models\Contact::where('is_read', 0)->get()->count();
+            @endphp
+            <a href="{{ route('contacts.index') }}" class="nav-link link-light {{ request()->path() == 'contacts' ? 'active' : '' }}">
                 <i class="fa-solid fa-paper-plane"></i>
-                <span>Contactos</span>
+                <span>Contactos
+                    @if($notifications)
+                        <span class="badge bg-danger rounded-pill">
+                            {{ $notifications >= 9 ? '+' . $notifications : $notifications }}
+                        </span>
+                    @endif
+                </span>
             </a>
         </li>
         <li>

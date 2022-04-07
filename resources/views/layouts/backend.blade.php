@@ -6,8 +6,9 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>@yield('title') | Área privada</title>
-
+        <link rel="icon" href="{{ asset('images/logo-white.png') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     </head>
 
     <body>
@@ -19,6 +20,9 @@
             </div>
         </div>
 
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        @stack('scripts')
     </body>
 </html>
