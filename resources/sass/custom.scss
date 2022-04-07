@@ -1,0 +1,19 @@
+.c-navbar {
+    .nav-link {
+        transition: all .5s ease;
+        margin-bottom: 10px;
+        &:hover {
+            transform: scale(1.05);
+        }
+        span {
+            display: none;
+            @include sm {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.btn-primary {
+    color: white !important;
+}
