@@ -13,9 +13,9 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link link-light">
-                <i class="fa-solid fa-file"></i>
-                <span>Recursos</span>
+            <a href="{{ route('backend.calendar') }}" class="nav-link link-light {{ request()->path() == 'calendar' ? 'active' : '' }}">
+                <i class="fa-solid fa-calendar"></i>
+                <span>Calendario</span>
             </a>
         </li>
         <li>

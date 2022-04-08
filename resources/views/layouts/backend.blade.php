@@ -9,6 +9,7 @@
         <link rel="icon" href="{{ asset('images/logo-white.png') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+        @stack('styles')
     </head>
 
     <body>

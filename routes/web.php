@@ -39,3 +39,7 @@ Route::prefix('/data')->group(function () {
 //    Route::get('contacts', [ContactController::class, 'data'])->name('data.contacts');
 });
 
+Route::get('/calendar', function () {
+    return view('backend.calendar');
+})->name('backend.calendar');
+
