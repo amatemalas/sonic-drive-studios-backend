@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
 
-    private $pagination = 2;
+    private $pagination = 10;
 
     public function count()
     {
