@@ -16,7 +16,7 @@
         <div class="d-flex vh-100 main">
             @include('navigation')
 
-            <div class="container py-4 d-flex flex-column justify-content-center">
+            <div class="container py-4 d-flex flex-column justify-content-center" id="request-update">
                 @yield('content')
             </div>
         </div>

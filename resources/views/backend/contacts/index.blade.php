@@ -47,7 +47,7 @@
                 <ul class="pagination">
                     @if($contacts->previousPageUrl())
                         <li class="page-item disabled">
-                            <a class="page-link" href="{{ $contacts->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Previous</a>
+                            <a class="page-link" href="{{ $contacts->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
                         </li>
                     @endif
                     @for($i=1; $i <= $contacts->lastPage(); $i++)
@@ -57,7 +57,7 @@
                     @endfor
                     @if($contacts->hasMorePages())
                         <li class="page-item">
-                            <a class="page-link" href="{{ $contacts->nextPageUrl() }}">Next</a>
+                            <a class="page-link" href="{{ $contacts->nextPageUrl() }}">Siguiente</a>
                         </li>
                     @endif
                 </ul>
@@ -65,3 +65,19 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.pagination a').click(function (e) {
+            e.preventDefault();
+            const url = new URL($(this).attr('href'));
+            $.ajax({
+                url: "{{ route('contacts.paginate') }}/" + url.searchParams.get('page'),
+                type : 'get',
+                success: function(response) {
+                    $('body').html(response);
+                },
+            });
+        });
+    </script>
+@endpush

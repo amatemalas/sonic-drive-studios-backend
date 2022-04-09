@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
 
+    private $pagination = 2;
+
     public function count()
     {
         return Contact::where('is_read', 0)->get()->count();
+    }
+
+    public function pagination(Request $request, $page)
+    {
+        $user = auth()->user();
+        $contacts = Contact::paginate($this->pagination, ['*'], 'page', $page);
+
+        return view('backend.contacts.index', compact('user', 'contacts'))->render();
     }
 
     /**
@@ -21,7 +31,7 @@ class ContactController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $contacts = Contact::paginate(10);
+        $contacts = Contact::paginate($this->pagination);
 
         return view('backend.contacts.index', compact('user', 'contacts'));
     }

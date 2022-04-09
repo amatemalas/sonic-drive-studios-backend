@@ -26,20 +26,24 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('backend.index')->middleware('auth');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/settings', 'settings')->name('settings');
+        Route::get('/profile', 'profile')->name('profile');
+    });
 
-Route::controller(UserController::class)->group(function () {
-    Route::get('/settings', 'settings')->name('settings');
-    Route::get('/profile', 'profile')->name('profile');
+    Route::resource('users', UserController::class);
+
+    Route::resource('contacts', ContactController::class);
+
+    Route::get('/contacts/paginate/{page?}', [ContactController::class, 'pagination'])
+        ->name('contacts.paginate');
+
+    Route::get('/calendar', function () {
+        return view('backend.calendar');
+    })->name('backend.calendar');
 });
 
-Route::resource('users', UserController::class);
-Route::resource('contacts', ContactController::class);
 
-Route::prefix('/data')->group(function () {
-//    Route::get('contacts', [ContactController::class, 'data'])->name('data.contacts');
-});
 
-Route::get('/calendar', function () {
-    return view('backend.calendar');
-})->name('backend.calendar');
 
