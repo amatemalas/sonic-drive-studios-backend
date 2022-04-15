@@ -7,13 +7,13 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto c-navbar">
         <li>
-            <a href="{{ route('backend.index') }}" class="nav-link link-light {{ request()->path() == 'dashboard' ? 'active' : '' }}" aria-current="page">
+            <a href="{{ route('backend.index') }}" class="nav-link link-light {{ isActiveRoute('backend.index') }}" aria-current="page">
                 <i class="fa-solid fa-home"></i>
                 <span>Inicio</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('backend.calendar') }}" class="nav-link link-light {{ request()->path() == 'calendar' ? 'active' : '' }}">
+            <a href="{{ route('backend.calendar') }}" class="nav-link link-light {{ isActiveRoute('backend.calendar') }}">
                 <i class="fa-solid fa-calendar"></i>
                 <span>Calendario</span>
             </a>
@@ -25,15 +25,28 @@
             </a>
         </li>
         <li>
+            <a href="#" class="nav-link link-light">
+                <i class="fa-solid fa-inbox"></i>
+                <span>Trabajos</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-light">
+                <i class="fa-solid fa-music"></i>
+                <span>Canciones</span>
+            </a>
+        </li>
+        <li>
             @php
                 $notifications = \App\Models\Contact::where('is_read', 0)->get()->count();
             @endphp
-            <a href="{{ route('contacts.index') }}" class="nav-link link-light {{ request()->path() == 'contacts' ? 'active' : '' }}">
+
+            <a href="{{ route('contacts.index') }}" class="nav-link link-light {{ isActiveRoute('contacts.*') }}">
                 <i class="fa-solid fa-paper-plane"></i>
                 <span>Contactos
                     @if($notifications)
                         <span class="badge bg-danger rounded-pill">
-                            {{ $notifications >= 9 ? '+' . $notifications : $notifications }}
+                            {{ $notifications }}
                         </span>
                     @endif
                 </span>
@@ -46,7 +59,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('settings') }}" class="nav-link link-light {{ request()->path() == 'settings' ? 'active' : '' }}">
+            <a href="{{ route('settings') }}" class="nav-link link-light {{ isActiveRoute('settings') }}">
                 <i class="fa-solid fa-gear"></i>
                 <span>Configuración</span>
             </a>
