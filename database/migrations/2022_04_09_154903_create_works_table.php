@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('year');
+            $table->integer('year');
             $table->string('band');
             $table->string('spotify');
             $table->string('image');

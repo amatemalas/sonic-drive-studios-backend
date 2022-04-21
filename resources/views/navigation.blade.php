@@ -25,7 +25,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link link-light">
+            <a href="{{ route('works.index') }}" class="nav-link link-light {{ isActiveRoute('works.*') }}">
                 <i class="fa-solid fa-inbox"></i>
                 <span>Trabajos</span>
             </a>

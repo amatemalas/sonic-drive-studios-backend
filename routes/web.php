@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\WorkController;
 
 
     /*
@@ -38,6 +39,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/contacts/paginate/{page?}', [ContactController::class, 'pagination'])
         ->name('contacts.paginate');
+
+    Route::resource('works', WorkController::class);
+
+    Route::get('/works/paginate/{page?}', [ContactController::class, 'pagination'])
+        ->name('works.paginate');
 
     Route::get('/calendar', function () {
         return view('backend.calendar');

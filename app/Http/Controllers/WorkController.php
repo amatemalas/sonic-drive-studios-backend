@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Work;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WorkController extends Controller
 {
+    private $pagination = 10;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,9 @@ class WorkController extends Controller
      */
     public function index()
     {
-        //
+        $works = Work::paginate($this->pagination);
+
+        return view('backend.works.index', compact('works'));
     }
 
     /**
@@ -24,7 +29,7 @@ class WorkController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.works.create');
     }
 
     /**
@@ -35,7 +40,27 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $data = $request->all();
+
+            if ($request->hasFile('image')) {
+                $data['image'] = $request->file('image')->store('public');
+            }
+
+            $work = Work::create($data);
+
+            DB::commit();
+
+            return redirect()->route('works.index')->with('status-message', 'Trabajo creado')->with('status', 'success');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->route('works.create')
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');
+        }
     }
 
     /**
@@ -57,7 +82,7 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
-        //
+        return view('backend.works.edit', compact('work'));
     }
 
     /**
@@ -69,7 +94,22 @@ class WorkController extends Controller
      */
     public function update(Request $request, Work $work)
     {
-        //
+        try {
+            $data = $request->all();
+
+            if ($request->hasFile('image')) {
+                $data['image'] = $request->file('image')->store('public');
+            }
+
+            $work->update($data);
+
+            return redirect()->route('works.index')->with('status-message', 'Trabajo editado correctamente')->with('status', 'success');
+
+        } catch (\Exception $e) {
+            return redirect()->route('works.edit', ['work' => $work])
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');;
+        }
     }
 
     /**
@@ -80,6 +120,20 @@ class WorkController extends Controller
      */
     public function destroy(Work $work)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $work->delete();
+
+            DB::commit();
+
+            return redirect()->route('works.index')->with('status-message', 'Trabajo borrado correctamente')->with('status', 'success');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->route('works.index')
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');
+        }
     }
 }
