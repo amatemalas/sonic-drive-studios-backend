@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use function auth;
-use function bcrypt;
-use function redirect;
-use function view;
 
 class UserController extends Controller
 {
+    public function clearCache()
+    {
+        $user = auth()->user();
+
+        Artisan::call('cache:clear');
+
+        return redirect('settings')->with('status-message', 'Caché limpiada correctamente')->with('status', 'success');
+    }
+
     public function profile()
     {
         $user = auth()->user();

@@ -27,10 +27,10 @@
             <input class="form-control" placeholder="Email" type="text" name="email" id="email" value="{{ $user->email }}">
         </div>
         <div class="mb-3">
-            <input class="form-control" placeholder="Password" type="password" name="password" id="password">
+            <input class="form-control" placeholder="Contraseña" type="password" name="password" id="password">
         </div>
         <div class="mb-3">
-            <input class="form-control" placeholder="Confirm password" type="password" name="confirm_password" id="confirm_password">
+            <input class="form-control" placeholder="Confirmar contraseña" type="password" name="confirm_password" id="confirm_password">
         </div>
         <div class="mb-3">
             <input class="form-control mb-3" value="{{ $user->image }}" type="file" name="image" id="js-image">

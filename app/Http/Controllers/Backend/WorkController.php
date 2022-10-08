@@ -12,6 +12,14 @@ class WorkController extends Controller
 {
     private $pagination = 10;
 
+    public function pagination(Request $request, $page)
+    {
+        $user = auth()->user();
+        $works = Work::paginate($this->pagination, ['*'], 'page', $page);
+
+        return view('backend.works.index', compact('user', 'works'))->render();
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\SongController;
-use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\WorkController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('users', UserController::class);
 
+    Route::get('/user/cache/clear', [UserController::class, 'clearCache'])
+        ->name('user.cache.clear');
+
     Route::resource('contacts', ContactController::class);
 
     Route::get('/contacts/paginate/{page?}', [ContactController::class, 'pagination'])
@@ -42,13 +45,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('works', WorkController::class);
 
-    Route::get('/works/paginate/{page?}', [ContactController::class, 'pagination'])
+    Route::get('/works/paginate/{page?}', [WorkController::class, 'pagination'])
         ->name('works.paginate');
 
     Route::resource('songs', SongController::class);
-
-    Route::get('/songs/paginate/{page?}', [ContactController::class, 'pagination'])
-        ->name('songs.paginate');
 
     Route::get('/calendar', function () {
         return view('backend.calendar');
