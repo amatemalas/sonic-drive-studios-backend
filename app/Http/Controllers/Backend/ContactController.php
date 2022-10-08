@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -106,6 +108,19 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $contact->delete();
+
+            DB::commit();
+            return redirect('contacts.index')
+                ->with('status-message', 'Trabajo creado')->with('status', 'success');
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return redirect('contacts.index')
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');
+        }
     }
 }

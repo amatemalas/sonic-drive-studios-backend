@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Song;
+use App\Models\Work;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SongController extends Controller
 {
@@ -14,7 +17,9 @@ class SongController extends Controller
      */
     public function index()
     {
-        //
+        $songs = Song::paginate(9);
+
+        return view('backend.songs.index', compact('songs'));
     }
 
     /**
@@ -24,7 +29,9 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
+        $works = Work::all();
+
+        return view('backend.songs.create', compact('works'));
     }
 
     /**
@@ -35,7 +42,24 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $data = $request->all();
+
+            if ($request->hasFile('sample')) {
+                $data['sample'] = $request->file('sample')->store('public/songs');
+            }
+
+            $song = Song::create($data);
+
+            DB::commit();
+
+            return view('backend.works.songs.list', ['songs' => $song->work->songs])->render();
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -57,7 +81,7 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        //
+        return view('backend.songs.edit', compact('song'));
     }
 
     /**
@@ -80,6 +104,18 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $song->delete();
+
+            DB::commit();
+            return view('backend.works.songs.list', ['songs' => $song->work->songs])->render();
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return redirect('works.edit', ['work', $song->work])
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');
+        }
     }
 }

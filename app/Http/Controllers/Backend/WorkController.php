@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
+use App\Models\Song;
 use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -82,7 +84,8 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
-        return view('backend.works.edit', compact('work'));
+        $available = Song::doesntHave('work')->get();
+        return view('backend.works.edit', compact('work', 'available'));
     }
 
     /**

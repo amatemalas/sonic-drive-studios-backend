@@ -35,14 +35,28 @@
         <div class="mb-3">
             <input class="form-control" placeholder="Link Spotify" type="text" name="spotify" value="{{ $work->spotify }}">
         </div>
-        <div class="mb-3">
-            <input class="form-control mb-3" value="{{ $work->image }}" type="file" name="image" id="js-image">
-
-            @if($work->image)
-                <img class="rounded" id="js-image-preview" src="{{ $work->path }}" />
-            @endif
+        <div class="row">
+            <div class="col-sm-6 col-12">
+                <div class="mb-3">
+                    <input class="form-control mb-3" value="{{ $work->image }}" type="file" name="image" id="js-image">
+        
+                    @if($work->image)
+                        <img class="rounded" id="js-image-preview" src="{{ $work->path }}" />
+                    @endif
+                </div>
+            </div>
+            <div class="col-sm-6 col-12">
+                <div class="mb-3">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#songModalCreate">Crear canciones</button>
+                    <div id="songsList">
+                        @include('backend.works.songs.list', ['songs' => $work->songs])
+                    </div>
+                </div>
+            </div>
         </div>
         <input class="btn btn-primary" type="submit" value="Actualizar">
         <a href="{{ route('works.index') }}" class="btn btn-outline-primary">Atrás</a>
     </form>
 @endsection
+
+@include('backend.works.songs.create', ['work' => $work])

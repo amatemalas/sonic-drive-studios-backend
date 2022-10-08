@@ -21,4 +21,9 @@ class Work extends Model
     {
         return Storage::url($this->image);
     }
+
+    public function getSlugAttribute()
+    {
+        return \Str::slug($this->name);
+    }
 }

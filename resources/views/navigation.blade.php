@@ -19,21 +19,9 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link link-light">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span>Productos</span>
-            </a>
-        </li>
-        <li>
             <a href="{{ route('works.index') }}" class="nav-link link-light {{ isActiveRoute('works.*') }}">
-                <i class="fa-solid fa-inbox"></i>
-                <span>Trabajos</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link link-light">
                 <i class="fa-solid fa-music"></i>
-                <span>Canciones</span>
+                <span>Trabajos</span>
             </a>
         </li>
         <li>
@@ -45,13 +33,25 @@
                 <i class="fa-solid fa-paper-plane"></i>
                 <span>Contactos
                     @if($notifications)
-                        <span class="badge bg-danger rounded-pill">
+                        <span class="badge bg-danger rounded-pill align-middle">
                             {{ $notifications }}
                         </span>
                     @endif
                 </span>
             </a>
         </li>
+        <li>
+            <a href="#" class="nav-link link-light">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Productos</span>
+            </a>
+        </li>
+        {{-- <li>
+            <a href="{{ route('songs.index') }}" class="nav-link link-light {{ isActiveRoute('songs.*') }}">
+                <i class="fa-solid fa-music"></i>
+                <span>Canciones</span>
+            </a>
+        </li> --}}
         <li>
             <a href="#" class="nav-link link-light">
                 <i class="fa-solid fa-newspaper"></i>

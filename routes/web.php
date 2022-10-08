@@ -1,22 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\WorkController;
+use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\SongController;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\WorkController;
+use Illuminate\Support\Facades\Route;
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Web Routes
-    |--------------------------------------------------------------------------
-    |
-    | Here is where you can register web routes for your application. These
-    | routes are loaded by the RouteServiceProvider within a group which
-    | contains the "web" middleware group. Now create something great!
-    |
-    */
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
@@ -44,6 +44,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/works/paginate/{page?}', [ContactController::class, 'pagination'])
         ->name('works.paginate');
+
+    Route::resource('songs', SongController::class);
+
+    Route::get('/songs/paginate/{page?}', [ContactController::class, 'pagination'])
+        ->name('songs.paginate');
 
     Route::get('/calendar', function () {
         return view('backend.calendar');
