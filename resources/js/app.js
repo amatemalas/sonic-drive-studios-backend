@@ -1,2 +1,2 @@
-require('./bootstrap');
-require('./calendar');
+require('./modules/bootstrap');
+require('./modules/calendar');
