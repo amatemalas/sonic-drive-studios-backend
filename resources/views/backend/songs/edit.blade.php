@@ -24,10 +24,15 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <input class="form-control" placeholder="Título" type="text" name="title" value="{{ old('title') }}">
+            <input class="form-control" placeholder="Título" type="text" name="title" value="{{ $song->title }}">
         </div>
         <div class="mb-3">
-            <input class="form-control mb-3" value="{{ old('sample') }}" type="file" name="sample" id="js-sample" accept="audio/*">
+            <input class="form-control mb-3" value="{{ $song->sample }}" type="file" name="sample" id="js-sample" accept="audio/*">
+            @if ($song->sample)
+                <audio controls>
+                    <source src="{{ $song->path }}">
+                </audio>
+            @endif
         </div>
         <input class="btn btn-primary" type="submit" value="Actualizar">
         <a href="{{ route('works.edit', ['work' => $song->work]) }}" class="btn btn-outline-primary">Atrás</a>

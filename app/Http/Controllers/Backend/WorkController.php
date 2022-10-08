@@ -111,7 +111,7 @@ class WorkController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('works.edit', ['work' => $work])
                 ->with('status-message', $e->getMessage())
-                ->with('status', 'danger');;
+                ->with('status', 'danger');
         }
     }
 

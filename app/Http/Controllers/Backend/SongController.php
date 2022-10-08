@@ -93,7 +93,26 @@ class SongController extends Controller
      */
     public function update(Request $request, Song $song)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $data = $request->all();
+
+            if ($request->hasFile('sample')) {
+                $data['sample'] = $request->file('sample')->store('public/songs');
+            }
+
+            $song->update($data);
+
+            DB::commit();
+
+            return redirect()->route('works.edit', ['work' => $song->work])->with('status-message', 'Canción editada correctamente')->with('status', 'success');
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return redirect()->route('works.edit', ['work' => $song->work])
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');
+        }
     }
 
     /**
