@@ -12,6 +12,6 @@ class Product extends Model implements TranslatableContract
     use HasFactory;
     use Translatable;
 
-    public $translatedAttributes = ['title', 'description', 'category'];
+    public $translatedAttributes = ['title', 'description', 'category', 'slug'];
     protected $guarded = [];
 }

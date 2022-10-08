@@ -63,7 +63,7 @@ class WorkController extends Controller
 
             DB::commit();
 
-            return redirect()->route('works.index')->with('status-message', 'Trabajo creado')->with('status', 'success');
+            return redirect()->route('works.edit', compact('work'))->with('status-message', 'Trabajo creado')->with('status', 'success');
         } catch (\Exception $e) {
             DB::rollBack();
 

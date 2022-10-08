@@ -1,36 +1,32 @@
 @extends('layouts.backend')
 
-@section('title', 'Contactos | Área privada')
+@section('title', 'Productos | Área privada')
 
 @section('content')
     <div class="">
-        <h2 class="mb-4 pb-3 border-bottom">Bandeja de entrada</h2>
+        <h2 class="mb-4 pb-3 border-bottom">Productos</h2>
         <div class="table-responsive">
             <table class="table table-striped" id="js-datatable">
                 <thead>
                     <tr>
-                        <th><i class="fas fa-eye"></i></th>
                         <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Email</th>
-                        <th>Fecha recibido</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($contacts as $contact)
+                @foreach($products as $product)
                     <tr>
-                        <td>{!! $contact->is_read ? '<div class="dot bg-success"></div>' : '<div class="dot bg-danger"></div>' !!}</td>
-                        <td>{{ $contact->name }}</td>
-                        <td>{{ $contact->surname }}</td>
-                        <td>{{ $contact->email }}</td>
-                        <td>{{ $contact->created_at }}</td>
+                        <td>{{ $product->title }}</td>
+                        <td>{{ $product->category }}</td>
+                        <td>{{ $product->price }}</td>
                         <td>
-                            <a href="{{ route('contacts.show',['contact' => $contact->id]) }}" class="btn btn-icon waves-effect waves-light">
-                                <span class="fa fa-eye"></span>
+                            <a href="{{ route('products.edit',['product' => $product->id]) }}" class="btn btn-icon waves-effect waves-light">
+                                <span class="fa fa-edit"></span>
                             </a>
 
-                            <form action="{{route('contacts.destroy', ['contact' => $contact->id])}}"
+                            <form action="{{route('products.destroy', ['product' => $product->id])}}"
                                   class="d-inline" data-element="el usuario">
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-icon waves-effect waves-light js-submit-deleterow">
@@ -43,21 +39,21 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            @if($contacts->lastPage() > 1)
+            @if($products->lastPage() > 1)
                 <ul class="pagination">
-                    @if($contacts->previousPageUrl())
+                    @if($products->previousPageUrl())
                         <li class="page-item disabled">
-                            <a class="page-link" href="{{ $contacts->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
+                            <a class="page-link" href="{{ $products->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
                         </li>
                     @endif
-                    @for($i=1; $i <= $contacts->lastPage(); $i++)
-                        <li class="page-item {{ $i == $contacts->currentPage() ? 'active' : '' }}">
-                            <a class="page-link" href="{{ $contacts->url($i) }}">{{ $i }}</a>
+                    @for($i=1; $i <= $products->lastPage(); $i++)
+                        <li class="page-item {{ $i == $products->currentPage() ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
                         </li>
                     @endfor
-                    @if($contacts->hasMorePages())
+                    @if($products->hasMorePages())
                         <li class="page-item">
-                            <a class="page-link" href="{{ $contacts->nextPageUrl() }}">Siguiente</a>
+                            <a class="page-link" href="{{ $products->nextPageUrl() }}">Siguiente</a>
                         </li>
                     @endif
                 </ul>

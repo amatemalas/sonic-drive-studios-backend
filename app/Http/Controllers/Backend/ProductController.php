@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public $pagination = 10;
+
+    public function pagination(Request $request, $page)
+    {
+        $user = auth()->user();
+        $products = Product::paginate($this->pagination, ['*'], 'page', $page);
+
+        return view('backend.products.index', compact('user', 'products'))->render();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate($this->pagination);
+        
+        return view('backend.products.index', compact('products'));
     }
 
     /**

@@ -35,7 +35,7 @@
                 <tbody>
                 @foreach($works as $work)
                     <tr>
-                        <td class="w-25"><img width="100px" src="{{ $work->path }}" class="rounded-circle me-2"></td>
+                        <td class="w-25"><img width="100px" height="100px" src="{{ $work->path }}" class="rounded-circle me-2"></td>
                         <td>{{ $work->name }}</td>
                         <td>{{ $work->band }}</td>
                         <td>{{ $work->year }}</td>

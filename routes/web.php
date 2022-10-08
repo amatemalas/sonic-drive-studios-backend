@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SongController;
 use App\Http\Controllers\Backend\WorkController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,11 @@ Route::middleware('auth')->group(function () {
         ->name('works.paginate');
 
     Route::resource('songs', SongController::class);
+    
+    Route::resource('products', ProductController::class);
+
+    Route::get('/products/paginate/{page?}', [ProductController::class, 'pagination'])
+    ->name('products.paginate');
 
     Route::get('/calendar', function () {
         return view('backend.calendar');

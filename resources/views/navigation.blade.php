@@ -41,7 +41,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link link-light">
+            <a href="{{ route('products.index') }}" class="nav-link link-light {{ isActiveRoute('products.*') }}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span>Productos</span>
             </a>
