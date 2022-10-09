@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->double('price')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('stock')->unsigned()->default(0);
             $table->timestamps();
         });
     }

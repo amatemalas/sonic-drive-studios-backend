@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('title', 'Calendar')
+@section('title', 'Calendar | Área privada')
 
 @section('content')
     <div id="calendar"></div>

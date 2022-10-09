@@ -6,6 +6,7 @@ use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model implements TranslatableContract
 {
@@ -14,4 +15,9 @@ class Product extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title', 'description', 'category', 'slug'];
     protected $guarded = [];
+
+    public function getPathAttribute()
+    {
+        return Storage::url($this->image);
+    }
 }

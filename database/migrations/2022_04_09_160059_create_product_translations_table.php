@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('product_translations', function (Blueprint $table) {
             $table->id();
             $table->string('locale');
-            $table->string('title');
-            $table->text('description');
-            $table->string('category');
+            $table->integer('product_id')->unsigned();
+            $table->string('title')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('description')->nullable();
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }
