@@ -32,7 +32,7 @@ class AuthController extends Controller
                 ->withSuccess('Signed in');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->with('status-message', 'Los credenciales no son correctos')->with('status', 'danger');
     }
 
     public function registration()
@@ -40,19 +40,19 @@ class AuthController extends Controller
         return view('auth.registration');
     }
 
-    public function customRegistration(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
+    // public function customRegistration(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'email' => 'required|email|unique:users',
+    //         'password' => 'required|min:6',
+    //     ]);
 
-        $data = $request->all();
-        $check = $this->create($data);
+    //     $data = $request->all();
+    //     $check = $this->create($data);
 
-        return redirect("dashboard")->withSuccess('You have signed-in');
-    }
+    //     return redirect("dashboard")->withSuccess('You have signed-in');
+    // }
 
     public function create(array $data)
     {
@@ -65,8 +65,8 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        if(!Auth::check()){
-            return redirect("login")->withSuccess('You are not allowed to access');
+        if(!Auth::check()) {
+            return redirect("login")->with('status-message', 'Acceda a una cuenta para poder visualizar la página')->with('status', 'danger');
         }
 
         $notifications = Contact::where('is_read', 0)->get()->count();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Astrotomic\Translatable\Locales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,7 +41,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('backend.products.create', [
-            'categoryOptions' => $this->getCategoryOptions(),
+            'categoryOptions' => ProductCategory::all(),
         ]);
     }
 
@@ -169,7 +170,11 @@ class ProductController extends Controller
     {
         return [
             'Servicio de mezcla',
-            'Tutoriales producción',
+            'Servicio de edición de pistas',
+            'Servicio de mastering',
+            'Servicio de reamp',
+            'Servicio completo',
+            'Cursos de producción',
             'Merchandising',
         ];
     }

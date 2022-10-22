@@ -41,7 +41,7 @@
                             <select class="form-select" name="{{ $locale }}[category]" id="category">
                                 <option selected disabled>Categoría [{{ Str::upper($locale) }}]</option>
                                 @foreach ($categoryOptions as $category)
-                                    <option value="{{ $category }}" {{ $category === $product->translate($locale)->category }}>
+                                    <option value="{{ $category }}" {{ $category === $product->translate($locale)->category ? 'selected' : '' }}>
                                         {{ $category }}
                                     </option>
                                 @endforeach

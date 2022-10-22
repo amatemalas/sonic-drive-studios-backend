@@ -1,7 +1,7 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-dark col-2 text-white navigation">
     <a href="{{ route('backend.index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none position-relative">
         <span class="fs-4 text-center">
-            <img class="mw-100 w-75" src="{{ asset('images/logo-white.png') }}" alt="">
+            <img class="mw-100 w-75" src="{{ asset('images/new-logo-white.png') }}" alt="">
         </span>
     </a>
     <hr>
@@ -52,12 +52,12 @@
                 <span>Canciones</span>
             </a>
         </li> --}}
-        <li>
+        {{-- <li>
             <a href="#" class="nav-link link-light">
                 <i class="fa-solid fa-newspaper"></i>
                 <span>Noticias</span>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="{{ route('settings') }}" class="nav-link link-light {{ isActiveRoute('settings') }}">
                 <i class="fa-solid fa-gear"></i>
