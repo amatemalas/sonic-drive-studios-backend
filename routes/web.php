@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SongController;
 use App\Http\Controllers\Backend\WorkController;
@@ -53,12 +54,12 @@ Route::middleware('auth')->group(function () {
     
     Route::resource('products', ProductController::class);
 
+    Route::resource('events', EventController::class)->except('index');
+
+    Route::get('/calendar', [EventController::class, 'index'])->name('events.index');
+
     Route::get('/products/paginate/{page?}', [ProductController::class, 'pagination'])
     ->name('products.paginate');
-
-    Route::get('/calendar', function () {
-        return view('backend.calendar');
-    })->name('backend.calendar');
 });
 
 

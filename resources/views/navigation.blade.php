@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('backend.calendar') }}" class="nav-link link-light {{ isActiveRoute('backend.calendar') }}">
+            <a href="{{ route('events.index') }}" class="nav-link link-light {{ isActiveRoute('events.index') }}">
                 <i class="fa-solid fa-calendar"></i>
                 <span>Calendario</span>
             </a>
@@ -33,9 +33,7 @@
                 <i class="fa-solid fa-paper-plane"></i>
                 <span>Contactos
                     @if($notifications)
-                        <span class="badge bg-danger rounded-pill align-middle">
-                            {{ $notifications }}
-                        </span>
+                        <span class="badge bg-danger rounded-pill p-1 mx-2"></span>
                     @endif
                 </span>
             </a>
