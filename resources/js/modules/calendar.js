@@ -16,7 +16,9 @@ if (calendarEl) {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,listWeek'
         },
-        // go ahead with other parameters
+        eventClick: function (info) {
+            window.location.replace('/dashboard/events/' + info.event.id + '/edit');
+        }
     });
 
     window.calendar.render();

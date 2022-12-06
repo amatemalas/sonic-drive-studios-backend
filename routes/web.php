@@ -29,7 +29,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('backend.index')->middleware('auth');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/settings', 'settings')->name('settings');
         Route::get('/profile', 'profile')->name('profile');
@@ -55,7 +55,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
 
     Route::resource('events', EventController::class)->except('index');
-
     Route::get('/calendar', [EventController::class, 'index'])->name('events.index');
 
     Route::get('/products/paginate/{page?}', [ProductController::class, 'pagination'])

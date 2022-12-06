@@ -3,6 +3,7 @@
 @section('title', 'Calendar | Área privada')
 
 @section('content')
+    @csrf
     <div class="row mb-2">
         <div class="col-2">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModalCreate">
@@ -17,7 +18,7 @@
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        $(document).ready(function () {
             let events = '{{ $events }}'.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
             //tratamiento para campos richeditor
@@ -27,7 +28,6 @@
 
             events.forEach((event) => {
                 window.calendar.addEvent(event);
-                console.log(event);
             });
         });
     </script>
@@ -37,6 +37,10 @@
     <style>
         #calendar {
             max-height: 90%;
+        }
+
+        .fc-event {
+            cursor: pointer;
         }
     </style>
 @endpush

@@ -75,7 +75,8 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        $customers = Customer::all();
+        return view('backend.events.edit', compact('event', 'customers'));
     }
 
     /**
@@ -87,7 +88,17 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        try {
+            $data = $request->all();
+
+            $event->update($data);
+
+            return redirect()->route('events.index');
+        } catch (Exception $e) {
+            return redirect()->route('events.edit')
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');
+        }
     }
 
     /**
@@ -98,6 +109,13 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        try {
+            $event->delete();
+            return redirect()->route('events.index')->with('status-message', 'Evento borrado correctamente')->with('status', 'success');
+        } catch (Exception $e) {
+            return redirect()->route('events.edit')
+                ->with('status-message', $e->getMessage())
+                ->with('status', 'danger');
+        }
     }
 }

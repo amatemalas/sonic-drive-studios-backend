@@ -59,7 +59,7 @@
         $('#songCreateForm').submit(function (e) {
             e.preventDefault();
             var data = new FormData(this);
-            data.append('sample', $('#js-sample')[0].files[0]);
+            // data.append('sample', $('#js-sample')[0].files[0]);
             $.ajax({
                 url: "{{ route('events.store') }}",
                 type : 'post',
@@ -70,8 +70,8 @@
                     'X-CSRF-TOKEN': $('input[name="_token"]').val()
                 },
                 success: function(response) {
-                    // $('#songsList').html(response);
-                    // $('.btn-close').click();
+                    $('#request-update').html(response);
+                    $('.btn-close').click();
                     window.location.reload();
     
                 },
