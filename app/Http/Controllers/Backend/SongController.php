@@ -19,7 +19,7 @@ class SongController extends Controller
     {
         $songs = Song::paginate(9);
 
-        return view('backend.songs.index', compact('songs'));
+        return view('backend.pages.songs.index', compact('songs'));
     }
 
     /**
@@ -31,7 +31,7 @@ class SongController extends Controller
     {
         $works = Work::all();
 
-        return view('backend.songs.create', compact('works'));
+        return view('backend.pages.songs.create', compact('works'));
     }
 
     /**
@@ -55,7 +55,7 @@ class SongController extends Controller
 
             DB::commit();
 
-            return view('backend.works.songs.list', ['songs' => $song->work->songs])->render();
+            return view('backend.pages.works.songs.list', ['songs' => $song->work->songs])->render();
         } catch (\Throwable $e) {
             DB::rollBack();
             return $e->getMessage();
@@ -81,7 +81,7 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        return view('backend.songs.edit', compact('song'));
+        return view('backend.pages.songs.edit', compact('song'));
     }
 
     /**
@@ -129,7 +129,7 @@ class SongController extends Controller
             $song->delete();
 
             DB::commit();
-            return view('backend.works.songs.list', ['songs' => $song->work->songs])->render();
+            return view('backend.pages.works.songs.list', ['songs' => $song->work->songs])->render();
         } catch (\Throwable $e) {
             DB::rollBack();
             return redirect('works.edit', ['work', $song->work])

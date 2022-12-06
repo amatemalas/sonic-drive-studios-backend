@@ -1,10 +1,10 @@
-@extends('layouts.backend')
+@extends('backend.layouts.default')
 
-@section('title', 'Editar producto | Área privada')
+@section('title', 'Crear producto | Área privada')
 
 @section('content')
 
-    <h2 class="mb-4 pb-3 border-bottom">Editar producto</h2>
+    <h2 class="mb-4 pb-3 border-bottom">Crear producto</h2>
     @if (session('status-message'))
         <div class="alert alert-{{session('status')}}">
             {{ session('status-message') }}
@@ -20,9 +20,8 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('products.update', compact('product')) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
             @foreach (config()->get('translatable.locales') as $locale)
                 <li class="nav-item">
@@ -35,48 +34,43 @@
                 <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="{{ $locale }}" role="tabpanel" aria-labelledby="{{ $locale }}-tab">
                     <div class="row mb-3">
                         <div class="col-md-6 col-12">
-                            <input class="form-control" placeholder="Título [{{ Str::upper($locale) }}]" type="text" name="{{ $locale }}[title]" value="{{ $product->translate($locale)->title }}">
+                            <input class="form-control" placeholder="Título [{{ Str::upper($locale) }}]" type="text" name="{{ $locale }}[title]" value="{{ old('title') }}">
                         </div>
                         <div class="col-md-6 col-12">
                             <select class="form-select" name="{{ $locale }}[category]" id="category">
                                 <option selected disabled>Categoría [{{ Str::upper($locale) }}]</option>
                                 @foreach ($categoryOptions as $category)
-                                    <option value="{{ $category }}" {{ $category === $product->translate($locale)->category ? 'selected' : '' }}>
-                                        {{ $category }}
-                                    </option>
+                                    <option value="{{ $category }}">{{ $category }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <textarea class="ckeditor form-control" name="{{ $locale }}[description]">{{ $product->translate($locale)->description }}</textarea>
+                        <textarea class="ckeditor form-control" name="{{ $locale }}[description]">{{ old('description') }}</textarea>
                     </div>
                 </div>
             @endforeach
         </div>
         <hr>
-        <div class="row mb-3">
-            <div class="col-md-6 col-12">
+        <div class="row">
+            <div class="col-md-6 col-12 mb-3">
                 <div class="input-group">
                     <button type="button" class="input-group-text js-stock">+</button>
                     <button type="button" class="input-group-text js-stock">-</button>
-                    <input class="form-control" placeholder="Stock" type="number" name="stock" value="{{ $product->stock }}">
+                    <input class="form-control" placeholder="Stock" type="number" name="stock">
                 </div>
             </div>
             <div class="col-md-6 col-12">
                 <div class="input-group">
                     <div class="input-group-text">€</div>
-                    <input class="form-control" placeholder="Precio" type="number" name="price" value="{{ $product->price }}">
+                    <input class="form-control" placeholder="Precio" type="number" name="price" value="{{ old('price') }}">
                 </div>
             </div>
         </div>
         <div class="mb-3">
-            <input class="form-control mb-3" value="{{ $product->image }}" type="file" name="image" id="js-image">
-            @if($product->image)
-                <img class="rounded" id="js-image-preview" src="{{ $product->path }}" />
-            @endif
+            <input class="form-control mb-3" value="{{ old('image') }}" type="file" name="image" id="js-image">
         </div>
-        <input class="btn btn-primary" type="submit" value="Actualizar">
+        <input class="btn btn-primary" type="submit" value="Crear">
         <a href="{{ route('products.index') }}" class="btn btn-outline-primary">Atrás</a>
     </form>
 @endsection

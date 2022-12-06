@@ -73,7 +73,7 @@ class AuthController extends Controller
 
         session()->put('notifications', $notifications);
 
-        return view('backend.index', compact('notifications'));
+        return view('backend.pages.index', compact('notifications'));
     }
 
     public function signOut() {

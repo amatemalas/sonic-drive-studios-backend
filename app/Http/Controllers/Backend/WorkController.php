@@ -17,7 +17,7 @@ class WorkController extends Controller
         $user = auth()->user();
         $works = Work::paginate($this->pagination, ['*'], 'page', $page);
 
-        return view('backend.works.index', compact('user', 'works'))->render();
+        return view('backend.pages.works.index', compact('user', 'works'))->render();
     }
 
     /**
@@ -29,7 +29,7 @@ class WorkController extends Controller
     {
         $works = Work::paginate($this->pagination);
 
-        return view('backend.works.index', compact('works'));
+        return view('backend.pages.works.index', compact('works'));
     }
 
     /**
@@ -39,7 +39,7 @@ class WorkController extends Controller
      */
     public function create()
     {
-        return view('backend.works.create');
+        return view('backend.pages.works.create');
     }
 
     /**
@@ -93,7 +93,7 @@ class WorkController extends Controller
     public function edit(Work $work)
     {
         $available = Song::doesntHave('work')->get();
-        return view('backend.works.edit', compact('work', 'available'));
+        return view('backend.pages.works.edit', compact('work', 'available'));
     }
 
     /**

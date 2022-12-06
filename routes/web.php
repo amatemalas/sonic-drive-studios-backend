@@ -20,6 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// FRONTEND
+Route::get('/', function () {
+    return view('frontend.pages.home');
+});
+
+// BACKEND
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::post('custom-login', 'customLogin')->name('login.custom');

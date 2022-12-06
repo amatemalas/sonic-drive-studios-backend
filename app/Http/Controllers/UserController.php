@@ -22,12 +22,12 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        return view('backend.profile', compact('user'));
+        return view('backend.pages.profile', compact('user'));
     }
 
     public function settings()
     {
-        return view('backend.settings');
+        return view('backend.pages.settings');
     }
 
     /**

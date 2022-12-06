@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('backend.layouts.default')
 
 @section('title', 'Crear trabajo | Área privada')
 

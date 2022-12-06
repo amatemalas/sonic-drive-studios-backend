@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('backend.layouts.default')
 
 @section('title', 'Editar trabajo | Área privada')
 
@@ -59,7 +59,7 @@
                 <div class="mb-3">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#songModalCreate">Crear canciones</button>
                     <div id="songsList">
-                        @include('backend.works.songs.list', ['songs' => $work->songs])
+                        @include('backend.pages.works.songs.list', ['songs' => $work->songs])
                     </div>
                 </div>
             </div>
@@ -69,4 +69,4 @@
     </form>
 @endsection
 
-@include('backend.works.songs.create', ['work' => $work])
+@include('backend.pages.works.songs.create', ['work' => $work])

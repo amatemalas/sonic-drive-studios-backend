@@ -22,7 +22,7 @@ class ContactController extends Controller
         $user = auth()->user();
         $contacts = Contact::paginate($this->pagination, ['*'], 'page', $page);
 
-        return view('backend.contacts.index', compact('user', 'contacts'))->render();
+        return view('backend.pages.contacts.index', compact('user', 'contacts'))->render();
     }
 
     /**
@@ -35,7 +35,7 @@ class ContactController extends Controller
         $user = auth()->user();
         $contacts = Contact::paginate($this->pagination);
 
-        return view('backend.contacts.index', compact('user', 'contacts'));
+        return view('backend.pages.contacts.index', compact('user', 'contacts'));
     }
 
     /**
@@ -74,7 +74,7 @@ class ContactController extends Controller
 
         $user = auth()->user();
 
-        return view('backend.contacts.show', compact('user', 'contact'));
+        return view('backend.pages.contacts.show', compact('user', 'contact'));
     }
 
     /**

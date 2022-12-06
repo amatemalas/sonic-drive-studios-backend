@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('backend.layouts.default')
 
 @section('title', 'Calendar | Área privada')
 
@@ -14,7 +14,7 @@
     <div id="calendar"></div>
 @endsection
 
-@include('backend.events.create', compact('customers'))
+@include('backend.pages.events.create', compact('customers'))
 
 @push('scripts')
     <script>

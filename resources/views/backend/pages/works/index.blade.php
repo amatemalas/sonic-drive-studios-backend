@@ -1,9 +1,11 @@
-@extends('layouts.backend')
+@extends('backend.layouts.default')
 
-@section('title', 'Productos | Área privada')
+@section('title', 'Contactos')
 
 @section('content')
     <div class="">
+
+        <h2 class="mb-4 pb-3 border-bottom d-flex justify-content-between">Trabajos realizados <a href="{{ route('works.create') }}" class="btn btn-primary">Crear</a></h2>
         @if (session('status-message'))
             <div class="alert alert-{{session('status')}}">
                 {{ session('status-message') }}
@@ -19,33 +21,33 @@
                 </ul>
             </div>
         @endif
-        <h2 class="mb-4 pb-3 border-bottom d-flex justify-content-between">Productos <a href="{{ route('products.create') }}" class="btn btn-primary">Crear</a></h2>
         <div class="table-responsive">
             <table class="table table-striped" id="js-datatable">
                 <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Categoría</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th>Acciones</th>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th>Banda</th>
+                    <th>Año</th>
+                    <th>Acciones</th>
+                </tr>
                 </thead>
                 <tbody>
-                @foreach($products as $product)
+                @foreach($works as $work)
                     <tr>
-                        <td>{{ $product->title }}</td>
-                        <td>{{ $product->category }}</td>
-                        <td>{{ $product->price }} €</td>
-                        <td>{{ $product->stock }}</td>
+                        <td class="w-25"><img width="100px" height="100px" src="{{ $work->path }}" class="rounded-circle me-2"></td>
+                        <td>{{ $work->name }}</td>
+                        <td>{{ $work->band }}</td>
+                        <td>{{ $work->year }}</td>
                         <td>
-                            <a href="{{ route('products.edit',['product' => $product->id]) }}" class="btn btn-icon waves-effect waves-light">
+                            <a href="{{ route('works.edit',['work' => $work->id]) }}" class="btn btn-icon waves-effect waves-light">
                                 <span class="fa fa-edit"></span>
                             </a>
 
-                            <form action="{{route('products.destroy', ['product' => $product->id])}}"
-                                  class="d-inline" data-element="el usuario">
+                            <form action="{{route('works.destroy', ['work' => $work->id])}}" method="post"
+                                  class="d-inline">
                                 @method('DELETE')
+                                @csrf
                                 <button type="submit" class="btn btn-icon waves-effect waves-light js-submit-deleterow">
                                     <span class="fa fa-trash"></span>
                                 </button>
@@ -56,21 +58,21 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            @if($products->lastPage() > 1)
+            @if($works->lastPage() > 1)
                 <ul class="pagination">
-                    @if($products->previousPageUrl())
+                    @if($works->previousPageUrl())
                         <li class="page-item disabled">
-                            <a class="page-link" href="{{ $products->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
+                            <a class="page-link" href="{{ $works->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
                         </li>
                     @endif
-                    @for($i=1; $i <= $products->lastPage(); $i++)
-                        <li class="page-item {{ $i == $products->currentPage() ? 'active' : '' }}">
-                            <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                    @for($i=1; $i <= $works->lastPage(); $i++)
+                        <li class="page-item {{ $i == $works->currentPage() ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $works->url($i) }}">{{ $i }}</a>
                         </li>
                     @endfor
-                    @if($products->hasMorePages())
+                    @if($works->hasMorePages())
                         <li class="page-item">
-                            <a class="page-link" href="{{ $products->nextPageUrl() }}">Siguiente</a>
+                            <a class="page-link" href="{{ $works->nextPageUrl() }}">Siguiente</a>
                         </li>
                     @endif
                 </ul>
@@ -85,7 +87,7 @@
             e.preventDefault();
             const url = new URL($(this).attr('href'));
             $.ajax({
-                url: "{{ route('contacts.paginate') }}/" + url.searchParams.get('page'),
+                url: "{{ route('works.paginate') }}/" + url.searchParams.get('page'),
                 type : 'get',
                 success: function(response) {
                     $('body').html(response);

@@ -18,7 +18,7 @@ class ProductController extends Controller
         $user = auth()->user();
         $products = Product::paginate($this->pagination, ['*'], 'page', $page);
 
-        return view('backend.products.index', compact('user', 'products'))->render();
+        return view('backend.pages.products.index', compact('user', 'products'))->render();
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
         $products = Product::paginate($this->pagination);
         
-        return view('backend.products.index', compact('products'));
+        return view('backend.pages.products.index', compact('products'));
     }
 
     /**
@@ -40,7 +40,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.products.create', [
+        return view('backend.pages.products.create', [
             'categoryOptions' => ProductCategory::all(),
         ]);
     }
@@ -99,7 +99,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('backend.products.edit', [
+        return view('backend.pages.products.edit', [
             'product' => $product,
             'categoryOptions' => $this->getCategoryOptions(),
         ]);

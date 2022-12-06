@@ -21,7 +21,7 @@ class EventController extends Controller
         $customers = Customer::all();
         $events = Event::all();
 
-        return view('backend.calendar', compact('events', 'customers'));
+        return view('backend.pages.calendar', compact('events', 'customers'));
     }
 
     /**
@@ -49,7 +49,7 @@ class EventController extends Controller
             $event = Event::create($data);
             DB::commit();
 
-            return view('backend.events.calendar.list')->render();
+            return view('backend.pages.events.calendar.list')->render();
         } catch (Exception $e) {
             DB::rollBack();
             return $e->getMessage();
@@ -76,7 +76,7 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         $customers = Customer::all();
-        return view('backend.events.edit', compact('event', 'customers'));
+        return view('backend.pages.events.edit', compact('event', 'customers'));
     }
 
     /**
