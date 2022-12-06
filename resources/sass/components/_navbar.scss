@@ -1,0 +1,17 @@
+.c-nav {
+    transition: all .5s ease !important;
+    .navbar-brand {
+        img {
+            transition: all .5s ease;
+            @media screen and (max-width: 900px) {
+                width: 170px !important;
+            }
+        }       
+    }
+
+    .navbar-collapse {
+        @media screen and (max-width: 900px) {
+            background-color: var(--bs-dark);
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.c-prenav {
+    border-color: rgba($color: #FFF, $alpha: 0.1) !important;
+    a {
+        text-decoration: none;
+        color: var(--bs-light);
+        transition: all .5s ease;
+        &:hover {
+            color: var(--bs-primary);
+        }
+
+        span {
+            @media screen and (max-width: 900px) {
+                display: none;
+            }
+        }
+    }
+}

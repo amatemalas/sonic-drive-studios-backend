@@ -39,33 +39,3 @@
         vertical-align: middle;
     }
 }
-
-.swiper {
-    height: 85vh;
-
-    .swiper-slide {
-        padding: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-}
-
-.c-prenav {
-    border-color: rgba($color: #FFF, $alpha: 0.1) !important;
-    a {
-        text-decoration: none;
-        color: var(--bs-light);
-        transition: all .5s ease;
-        &:hover {
-            color: var(--bs-primary);
-        }
-
-        span {
-            @media screen and (max-width: 900px) {
-                display: none;
-            }
-        }
-    }
-}
