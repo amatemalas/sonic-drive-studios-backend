@@ -39,3 +39,14 @@
         vertical-align: middle;
     }
 }
+
+.swiper {
+    height: 85vh;
+
+    .swiper-slide {
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

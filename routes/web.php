@@ -23,14 +23,13 @@ use Illuminate\Support\Facades\Route;
 // FRONTEND
 Route::get('/', function () {
     return view('frontend.pages.home');
-});
+})->name('home');
 
 // BACKEND
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::post('custom-login', 'customLogin')->name('login.custom');
     Route::get('registration', 'registration')->name('register-user');
-    // Route::post('custom-registration', 'customRegistration')->name('register.custom');
     Route::get('signout', 'signOut')->name('signout');
     Route::get('/dashboard', 'dashboard')->name('backend.index')->middleware('auth');
 });
