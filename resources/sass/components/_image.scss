@@ -1,0 +1,28 @@
+.c-image {
+    position: relative;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    @for $i from 1 through 200 {
+        $percent: percentage($i/100);
+        &--#{$i} {
+          padding-top: $percent;
+        }
+      }    
+
+    img, video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    &--background {
+        position: absolute;
+        top:0;
+        left: 0;
+        height: 100%;
+        z-index: -1;
+      }    
+}

@@ -28,6 +28,7 @@
         "@fullcalendar/timegrid": "^5.11.0",
         "boostrap": "^2.0.0",
         "fullcalendar": "^5.11.0",
+        "jquery-parallax.js": "^1.5.0",
         "swiper": "^8.4.5"
     }
 }

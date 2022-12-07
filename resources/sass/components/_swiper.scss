@@ -1,11 +1,30 @@
-.swiper {
+.js-slider {
     height: 100vh;
-
     .swiper-slide {
         padding: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
+    }
+}
+
+.js-carousel {
+    position: relative;
+    .swiper-slide {
+        // transform: all .5s ease;
+        // &:not(.swiper-slide-active) {
+        //     transform: scale(0.8);
+        // }
+    }
+}
+
+.js-carousel-button-prev, .js-carousel-button-next {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 25px;
+    @media screen and (max-width: 900px) {
+        font-size: 15px;
     }
 }
