@@ -4,7 +4,7 @@ const slider = new Swiper('.js-slider', {
     autoplay: {
         delay: 5000,
     },
-    loop: true,
+    loop: false,
     navigation: {
         nextEl: ".js-slider-button-next",
         prevEl: ".js-slider-button-prev",

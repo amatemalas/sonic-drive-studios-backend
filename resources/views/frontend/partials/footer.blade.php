@@ -1,4 +1,4 @@
-<footer class="bg-dark text-light">
+<footer class="c-footer bg-dark text-light border-top">
     <div class="container py-5">
         <div class="row">
             <div class="col-md-5 mb-3">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+        <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top">
             <p>© {{ date('Y') }} Sonic Drive Studios. All rights reserved.</p>
             <ul class="list-unstyled d-flex">
                 <li class="ms-3">

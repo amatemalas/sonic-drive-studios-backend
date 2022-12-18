@@ -1,4 +1,4 @@
-<nav class="c-nav fixed-top" data-aos="fade-down">
+<nav class="c-nav fixed-top {{ url()->current() != route('home') ? 'navbar-inner bg-dark' : '' }}" data-aos="fade-down">
     <div class="c-prenav border-bottom">
         <div class="container">
             <div class="text-light py-2 d-flex justify-content-between">
@@ -6,8 +6,8 @@
                     <a class="me-3" href="mailto:sonicdrivestudios@gmail.com">
                         <i class="fa-solid fa-envelope"></i> <span>sonicdrivestudios@gmail.com</span>
                     </a>
-                    <a href="tel:+34123456789">
-                        <i class="fa-solid fa-phone"></i> <span>+34 123 456 789</span>
+                    <a href="tel:+34651504734">
+                        <i class="fa-solid fa-phone"></i> <span>+34 651 50 47 34</span>
                     </a>
                 </div>
                 <div>
@@ -40,10 +40,10 @@
             <div class="d-lg-flex justify-content-center collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link {{ url()->current() === route('home') ? 'active' : '' }}" aria-current="page" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Trabajos</a>
+                        <a class="nav-link {{ url()->current() === route('frontend.works.index') ? 'active' : '' }}" href="{{ route('frontend.works.index') }}">Trabajos</a>
                     </li>
                     <li class="nav-item ms-3 d-lg-block d-none">
                         <a class="navbar-brand" href="{{ route('home') }}">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SongController;
 use App\Http\Controllers\Backend\WorkController;
+use App\Http\Controllers\WorkController as FrontendWorkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.pages.home');
 })->name('home');
+
+Route::get('/trabajos', [FrontendWorkController::class, 'index'])->name('frontend.works.index');
 
 // BACKEND
 Route::controller(AuthController::class)->group(function () {
