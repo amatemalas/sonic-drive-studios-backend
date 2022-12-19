@@ -13,14 +13,14 @@ const slider = new Swiper('.js-slider', {
 
 const carousel = new Swiper('.js-carousel', {
     slidesPerView: 1,
-    spaceBetween: 20,
+    spaceBetween: 0,
     navigation: {
         nextEl: ".js-carousel-button-next",
         prevEl: ".js-carousel-button-prev",
     },
     breakpoints: {
         640: {
-            slidesPerView: 2,
+            slidesPerView: 3,
         }
     }
 });

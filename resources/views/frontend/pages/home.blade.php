@@ -94,69 +94,7 @@
     </section>
 
     {{-- SECCIÓN TRABAJOS REALIZADOS --}}
-    <section class="container-fluid py-5" data-aos="zoom-in">
-        <div class="container">
-            <div class="d-lg-flex justify-content-between align-items-center">
-                <h3 class="display-6 mb-lg-0 mb-3 text-primary">Trabajos realizados</h3>
-                <div class="swiper-buttons">
-                    <button class="js-carousel-button-prev text-light mx-2">
-                        <i class="fa-solid fa-arrow-left fa-xl"></i>
-                    </button>
-                    <button class="js-carousel-button-next text-light mx-2">
-                        <i class="fa-solid fa-arrow-right fa-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="swiper js-carousel m-lg-5 mt-5">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="card mb-3 bg-dark border-0 shadow">
-                        <div class="row g-0">
-                            <div class="col-lg-4">
-                                <img src="{{ asset('images/rise-rise.png') }}" class="img-fluid rounded-start"
-                                    alt="...">
-                            </div>
-                            <div class="col-lg-8 d-flex align-items-center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rise on Fire - Rise</h5>
-                                    <h6 class="card-subtitle text-muted mb-3">Single</h6>
-                                    <p class="card-text">Single grabado para la banda Rise on Fire durante el verano de
-                                        2021. Para este trabajo se ha utilizado nuestro Peavey 5150 mezclado con el plugin
-                                        Fortin Nameless, GGD para las baterías con el preset P4...</p>
-                                    <p class="card-text"><small class="text-muted">Fecha grabación: 11/06/2021 · Fecha
-                                            salida: 11/06/2022</small></p>
-                                    <div class="btn btn-primary">Ver más</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card mb-3 bg-dark border-0 shadow">
-                        <div class="row g-0">
-                            <div class="col-lg-4">
-                                <img src="{{ asset('images/rise-rise.png') }}" class="img-fluid rounded-start"
-                                    alt="...">
-                            </div>
-                            <div class="col-lg-8 d-flex align-items-center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rise on Fire - Rise</h5>
-                                    <h6 class="card-subtitle text-muted mb-3">Single</h6>
-                                    <p class="card-text">Single grabado para la banda Rise on Fire durante el verano de
-                                        2021. Para este trabajo se ha utilizado nuestro Peavey 5150 mezclado con el plugin
-                                        Fortin Nameless, GGD para las baterías con el preset P4...</p>
-                                    <p class="card-text"><small class="text-muted">Fecha grabación: 11/06/2021 · Fecha
-                                            salida: 11/06/2022</small></p>
-                                    <div class="btn btn-primary">Ver más</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('frontend.partials.works.featured', compact('works'))
 
     {{-- SECCIÓN INFO EXTRA --}}
     <section class="container py-5" data-aos="zoom-in">
@@ -171,7 +109,9 @@
                 <h5 class="text-primary">PRESUPUESTO</h5>
                 <h2 class="mb-3 display-6">Cuéntanos tu idea de proyecto</h2>
                 <p>¿Estás pensando en iniciar la grabación de tu trabajo? Gracias a nuestro calculador de proyecto podemos darte un precio estimado y, si lo prefieres, puedes enviarnos tu propuesta para poder valorar más en detalle y ponerle fecha y hora para empezar.</p>
-                <a class="btn btn-outline-primary" href="#">Calcula tu presupuesto aquí</a>
+                <a class="btn btn-outline-primary" href="{{ route('calculator') }}">
+                    Calcula tu presupuesto aquí
+                </a>
             </div>
         </div>
     </section>

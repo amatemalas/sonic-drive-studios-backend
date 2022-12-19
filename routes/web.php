@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SongController;
 use App\Http\Controllers\Backend\WorkController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WorkController as FrontendWorkController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +23,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // FRONTEND
-Route::get('/', function () {
-    return view('frontend.pages.home');
-})->name('home');
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/presupuesto', [HomeController::class, 'calculator'])->name('calculator');
 Route::get('/trabajos', [FrontendWorkController::class, 'index'])->name('frontend.works.index');
 
 // BACKEND

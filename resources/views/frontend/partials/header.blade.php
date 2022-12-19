@@ -40,7 +40,7 @@
             <div class="d-lg-flex justify-content-center collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link {{ url()->current() === route('home') ? 'active' : '' }}" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link {{ url()->current() === route('home') ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ url()->current() === route('frontend.works.index') ? 'active' : '' }}" href="{{ route('frontend.works.index') }}">Trabajos</a>
