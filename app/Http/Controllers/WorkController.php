@@ -48,7 +48,7 @@ class WorkController extends Controller
      */
     public function show(Work $work)
     {
-        //
+        return view('frontend.pages.work', compact('work'));
     }
 
     /**

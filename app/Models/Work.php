@@ -26,4 +26,14 @@ class Work extends Model
     {
         return \Str::slug($this->name);
     }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -33,7 +33,7 @@
                                     <div class="card-text">
                                         {{ $work->year }} · {{ count($work->songs) }} canción/es
                                     </div>
-                                    <a href="#" class="btn btn-primary mt-3">Ver más</a>
+                                    <a href="{{ route('frontend.works.show', compact('work')) }}" class="btn btn-primary mt-3">Ver más</a>
                                 </div>
                             </div>
                         </div>
