@@ -31,7 +31,7 @@
     <div class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
-                <img width="170" src="{{ asset('images/logo-white.png') }}" alt="">
+                <img width="120" src="{{ asset('images/logo-white-3.png') }}" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
                     </li>
                     <li class="nav-item ms-3 d-lg-block d-none">
                         <a class="navbar-brand" href="{{ route('home') }}">
-                            <img width="230" src="{{ asset('images/logo-white.png') }}" alt="">
+                            <img width="120" src="{{ asset('images/logo-white-3.png') }}" alt="">
                         </a>
                     </li>
                     <li class="nav-item">

@@ -11,6 +11,7 @@
             <div class="card-text">
                 {{ $item->year }} · {{ count($item->songs) }} canción/es
             </div>
+            <a class="btn btn-primary mt-3" href="{{ route('frontend.works.show', ['work' => $item]) }}">Ver más</a>
         </div>
     </div>
 </div>

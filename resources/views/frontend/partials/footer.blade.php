@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-5 mb-3">
                 <a class="c-footer__brand" href="{{ route('home') }}">
-                    <img src="{{ asset('images/logo-white.png') }}" alt="">
+                    <img width="170" src="{{ asset('images/logo-white-3.png') }}" alt="">
                 </a>
             </div>
             <div class="col-6 col-md-2 mb-3 offset-md-1">

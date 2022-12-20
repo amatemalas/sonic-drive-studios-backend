@@ -12,3 +12,24 @@
 .z-index-1 {
     z-index: 1;
 }
+
+.accordion-item {
+    border-color: var(--bs-gray);
+}
+
+.accordion-button {
+    color: var(--bs-light);
+    background: var(--bs-dark);
+    &::after {
+        filter: brightness(0%) invert(70%);
+    }
+
+    &:not(.collapsed) {
+        color: var(--bs-light);
+        background: var(--bs-dark);
+    }
+}
+
+.accordion-body {
+    background: var(--bs-dark);
+}
