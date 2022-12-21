@@ -31,7 +31,7 @@
                                         {{ $work->band }}
                                     </h5>
                                     <div class="card-text">
-                                        {{ $work->year }} · {{ count($work->songs) }} canción/es
+                                        {{ $work->year }} {{ count($work->songs) > 0 ? ' · ' . count($work->songs) . ' canción/es' : '' }} 
                                     </div>
                                     <a href="{{ route('frontend.works.show', compact('work')) }}" class="btn btn-primary mt-3">Ver más</a>
                                 </div>

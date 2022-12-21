@@ -3,8 +3,8 @@
         <div class="container">
             <div class="text-light py-2 d-flex justify-content-between">
                 <div>
-                    <a class="me-3" href="mailto:sonicdrivestudios@gmail.com">
-                        <i class="fa-solid fa-envelope"></i> <span>sonicdrivestudios@gmail.com</span>
+                    <a class="me-3" href="mailto:alexsdstudios@gmail.com">
+                        <i class="fa-solid fa-envelope"></i> <span>alexsdstudios@gmail.com</span>
                     </a>
                     <a href="tel:+34651504734">
                         <i class="fa-solid fa-phone"></i> <span>+34 651 50 47 34</span>
@@ -51,7 +51,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Productos</a>
+                        <a class="nav-link {{ url()->current() === route('frontend.products.index') ? 'active' : '' }}" href="{{ route('frontend.products.index') }}">Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>

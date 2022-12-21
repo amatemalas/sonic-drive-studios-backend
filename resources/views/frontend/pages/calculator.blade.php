@@ -1,17 +1,11 @@
 @extends('frontend.layouts.default')
 
 @section('content')
-    {{-- SLIDER --}}
-    <section class="bg-gradient text-light">
-        <div class="c-head text-center" data-aos="zoom-in" data-aos-delay="500">
-            <div>
-                <h1>Presupuesto</h1>
-            </div>
-            <picture class="c-image c-image--background opacity-25">
-                <img src="{{ asset('images/studio.jpg') }}" alt="">
-            </picture>
-        </div>
-    </section>
+    
+    @include('frontend.partials.head', [
+        'title' => 'Presupuesto', 
+    ])
+
     <div class="container pt-5 pb-3">
         <h2 class="text-primary">Calcula tu presupuesto aquí</h2>
         <form method="POST">

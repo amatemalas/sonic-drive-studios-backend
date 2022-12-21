@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
-use Astrotomic\Translatable\Locales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Translation\Translator;
 
 class ProductController extends Controller
 {
@@ -62,8 +62,9 @@ class ProductController extends Controller
                 $data['image'] = $request->file('image')->store('public');
             }
 
-            if ($request->has('title')) {
-                $data['slug'] = \Str::slug($data['title']);
+            $locales = config()->get('translatable.locales');
+            foreach ($locales as $locale) {
+                $data[$locale]['slug'] = str()->slug($data[$locale]['title']);
             }
 
             $product = Product::create($data);
@@ -123,8 +124,9 @@ class ProductController extends Controller
                 $data['image'] = $request->file('image')->store('public');
             }
 
-            if ($request->has('title')) {
-                $data['slug'] = \Str::slug($data['title']);
+            $locales = config()->get('translatable.locales');
+            foreach ($locales as $locale) {
+                $data[$locale]['slug'] = str()->slug($data[$locale]['title']);
             }
 
             $product->update($data);

@@ -1,18 +1,14 @@
 @extends('frontend.layouts.default')
+@section('title',  $work->name . ' | Sonic Drive Studios')
 
 @section('content')
-    {{-- SLIDER --}}
-    <section class="bg-gradient text-light">
-        <div class="c-head text-center" data-aos="zoom-in" data-aos-delay="500">
-            <div>
-                <h1>{{ $work->name }}</h1>
-                <h3>{{ $work->band }}</h3>
-            </div>
-            <picture class="c-image c-image--background opacity-25">
-                <img src="{{ $work->path }}" alt="...">
-            </picture>
-        </div>
-    </section>
+    
+    @include('frontend.partials.head', [
+        'title' => $work->name, 
+        'subtitle' => $work->band,
+        'image' => $work->path,
+    ])
+
     <div class="container pt-4">
         <ul class="c-breadcrumbs">
             <li><a href="{{ route('home') }}">Inicio</a></li>
@@ -23,16 +19,14 @@
     </div>
     <div class="container py-5">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 mb-3">
                 <img class="rounded w-100" src="{{ $work->path }}" alt="...">
             </div>
             <div class="col-md-9">
                 <h2 class="text-primary">{{ $work->name }} ({{ $work->type }})</h2>
                 <h4>{{ $work->band }}</h4>
                 <h4>{{ $work->year }}</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic saepe minima dignissimos excepturi,
-                    accusamus voluptatum. Magnam, voluptates. Ducimus excepturi fuga corrupti amet nihil exercitationem
-                    nostrum, perferendis quaerat magnam consectetur aut.</p>
+                <p>{{ $work->description }}</p>
             </div>
         </div>
 
@@ -77,6 +71,33 @@
                 </div>
             @endif
         </div>
-
+        <div class="row mt-5">
+            <h3 class="text-primary mb-4">Otros trabajos de {{ $work->band }}</h3>
+            <div class="swiper js-carousel">
+                <div class="swiper-wrapper mb-2">
+                    @foreach ($relatedWorks as $work)
+                        <div class="swiper-slide">
+                            <div class="shadow h-100">
+                                <div class="card bg-dark border-0">
+                                    <picture class="c-image c-image--100">
+                                        <img class="card-image" src="{{ $work->path }}" alt="">
+                                    </picture>
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{ $work->name }} ({{ $work->type }})</h4>
+                                        <h5 class="card-subtitle text-muted">
+                                            {{ $work->band }}
+                                        </h5>
+                                        <div class="card-text">
+                                            {{ $work->year }} · {{ count($work->songs) }} canción/es
+                                        </div>
+                                        <a class="btn btn-primary mt-3" href="{{ route('frontend.works.show', ['work' => $work]) }}">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

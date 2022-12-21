@@ -45,6 +45,9 @@
             <input class="form-control" placeholder="Link Spotify" type="text" name="spotify" value="{{ old('spotify') }}">
         </div>
         <div class="mb-3">
+            <textarea class="form-control" placeholder="Descripción" type="text" name="description">{{ old('description') }}</textarea>
+        </div>
+        <div class="mb-3">
             <input class="form-control mb-3" value="{{ old('image') }}" type="file" name="image" id="js-image">
         </div>
         <input class="btn btn-primary" type="submit" value="Crear">

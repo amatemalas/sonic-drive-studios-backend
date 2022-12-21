@@ -39,11 +39,11 @@
                         <td>{{ $product->price }} €</td>
                         <td>{{ $product->stock }}</td>
                         <td>
-                            <a href="{{ route('products.edit',['product' => $product->id]) }}" class="btn btn-icon waves-effect waves-light">
+                            <a href="{{ route('products.edit',['product' => $product]) }}" class="btn btn-icon waves-effect waves-light">
                                 <span class="fa fa-edit"></span>
                             </a>
 
-                            <form action="{{route('products.destroy', ['product' => $product->id])}}"
+                            <form action="{{route('products.destroy', ['product' => $product])}}"
                                   class="d-inline" data-element="el usuario">
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-icon waves-effect waves-light js-submit-deleterow">

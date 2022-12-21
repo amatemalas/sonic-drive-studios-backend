@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Work;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class WorkController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works = Work::all();
-
-        return view('frontend.pages.works', compact('works'));
+        $products = Product::all();
+        return view('frontend.pages.products', compact('products'));
     }
 
     /**
@@ -43,22 +42,21 @@ class WorkController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Work  $work
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Work $work)
+    public function show(Product $product)
     {
-        $relatedWorks = Work::where('band', $work->band)->where('id', '!=', $work->id)->get();
-        return view('frontend.pages.work', compact('work', 'relatedWorks'));
+        return view('frontend.pages.product', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Work  $work
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Work $work)
+    public function edit(Product $product)
     {
         //
     }
@@ -67,10 +65,10 @@ class WorkController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Work  $work
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Work $work)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -78,10 +76,10 @@ class WorkController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Work  $work
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Work $work)
+    public function destroy(Product $product)
     {
         //
     }

@@ -20,4 +20,14 @@ class Product extends Model implements TranslatableContract
     {
         return Storage::url($this->image);
     }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -11370,7 +11370,7 @@ textarea.form-control-lg {
 }
 @media screen and (max-width: 900px) {
   .c-nav .navbar-brand img {
-    width: 170px !important;
+    width: 80px !important;
   }
 }
 @media screen and (max-width: 900px) {
@@ -12046,6 +12046,7 @@ textarea.form-control-lg {
 .c-breadcrumbs {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   padding-left: 0;
 }
 .c-breadcrumbs li:not(:last-child)::after {
@@ -12063,6 +12064,11 @@ textarea.form-control-lg {
   top: 0;
   left: 0;
   overflow: hidden;
+}
+@media screen and (max-width: 900px) {
+  .card-banner {
+    display: none;
+  }
 }
 
 .z-index-1 {

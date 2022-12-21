@@ -59,6 +59,8 @@ class WorkController extends Controller
                 $data['image'] = $request->file('image')->store('public');
             }
 
+            $data['slug'] = str()->slug($data['title']);
+
             $work = Work::create($data);
 
             DB::commit();
@@ -111,6 +113,8 @@ class WorkController extends Controller
             if ($request->hasFile('image')) {
                 $data['image'] = $request->file('image')->store('public');
             }
+
+            $data['slug'] = str()->slug($data['title']);
 
             $work->update($data);
 

@@ -45,6 +45,9 @@
         <div class="mb-3">
             <input class="form-control" placeholder="Link Spotify" type="text" name="spotify" value="{{ $work->spotify }}">
         </div>
+        <div class="mb-3">
+            <textarea class="form-control" placeholder="Descripción" type="text" name="description">{{ $work->description }}</textarea>
+        </div>
         <div class="row">
             <div class="col-sm-6 col-12">
                 <div class="mb-3">

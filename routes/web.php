@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SongController;
 use App\Http\Controllers\Backend\WorkController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WorkController as FrontendWorkController;
+use App\Http\Controllers\ProductController as FrontendProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/presupuesto', [HomeController::class, 'calculator'])->name('calculator');
 Route::get('/trabajos', [FrontendWorkController::class, 'index'])->name('frontend.works.index');
 Route::get('/trabajos/{work:slug}', [FrontendWorkController::class, 'show'])->name('frontend.works.show');
+Route::get('/productos', [FrontendProductController::class, 'index'])->name('frontend.products.index');
+Route::get('/productos/{product}', [FrontendProductController::class, 'show'])->name('frontend.products.show');
 
 // BACKEND
 Route::controller(AuthController::class)->group(function () {
