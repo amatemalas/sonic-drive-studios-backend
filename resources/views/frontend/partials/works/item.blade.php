@@ -1,4 +1,4 @@
-<div class="shadow h-100">
+<div class="shadow h-100" data-aos="zoom-in">
     <div class="card bg-dark border-0">
         <picture class="c-image c-image--100">
             <img class="card-image" src="{{ $item->path }}" alt="">

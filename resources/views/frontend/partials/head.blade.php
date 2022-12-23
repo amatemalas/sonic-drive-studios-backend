@@ -1,6 +1,6 @@
 {{-- SLIDER --}}
 <section class="bg-gradient text-light">
-    <div class="c-head text-center" data-aos="zoom-in" data-aos-delay="500">
+    <div class="c-head text-center" data-aos="zoom-in">
         <div>
             <h1>{{ $title }}</h1>
             @if (isset($subtitle))

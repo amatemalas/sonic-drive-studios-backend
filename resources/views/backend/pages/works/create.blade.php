@@ -35,14 +35,21 @@
                 </select>
             </div>
         </div>
-        <div class="mb-3">
-            <input class="form-control" placeholder="Banda" type="text" name="band" value="{{ old('band') }}">
+        <div class="row mb-3">
+            <div class="col-md-6 col-12">
+                <input class="form-control" placeholder="Banda" type="text" name="band" value="{{ old('band') }}">
+            </div>
+            <div class="col-md-6 col-12">
+                <input class="form-control" placeholder="Año" type="text" name="year" value="{{ old('year') }}">
+            </div>
         </div>
-        <div class="mb-3">
-            <input class="form-control" placeholder="Año" type="text" name="year" value="{{ old('year') }}">
-        </div>
-        <div class="mb-3">
-            <input class="form-control" placeholder="Link Spotify" type="text" name="spotify" value="{{ old('spotify') }}">
+        <div class="row mb-3">
+            <div class="col-md-6 col-12">
+                <input class="form-control" placeholder="Género" type="text" name="genre" value="{{ old('genre') }}">
+            </div>
+            <div class="col-md-6 col-12">
+                <input class="form-control" placeholder="Link Spotify" type="text" name="spotify" value="{{ old('spotify') }}">
+            </div>
         </div>
         <div class="mb-3">
             <textarea class="form-control" placeholder="Descripción" type="text" name="description">{{ old('description') }}</textarea>

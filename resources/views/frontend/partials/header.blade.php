@@ -11,13 +11,13 @@
                     </a>
                 </div>
                 <div>
-                    <a href="#" target="_blank">
+                    <a href="https://www.instagram.com/sonicdrivestudios/" target="_blank">
                         <i class="fa-brands fa-instagram fa-lg"></i>
                     </a>
-                    <a class="ms-2" href="#" target="_blank">
+                    <a class="ms-2" href="https://twitter.com/StudiosDrive" target="_blank">
                         <i class="fa-brands fa-twitter fa-lg"></i>
                     </a>
-                    <a class="ms-2" href="#" target="_blank">
+                    <a class="ms-2" href="wa.link/fiwf6s" target="_blank">
                         <i class="fa-brands fa-whatsapp fa-lg"></i>
                     </a>
                     <a class="ms-2" href="#" target="_blank">
