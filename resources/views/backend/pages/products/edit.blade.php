@@ -35,17 +35,23 @@
                 <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="{{ $locale }}" role="tabpanel" aria-labelledby="{{ $locale }}-tab">
                     <div class="row mb-3">
                         <div class="col-md-6 col-12">
-                            <input class="form-control" placeholder="Título [{{ Str::upper($locale) }}]" type="text" name="{{ $locale }}[title]" value="{{ $product->translate($locale)->title }}">
+                            <div class="form-floating">
+                                <input class="form-control" placeholder="Título [{{ Str::upper($locale) }}]" type="text" name="{{ $locale }}[title]" value="{{ $product->translate($locale)->title }}">
+                                <label>Título [{{ mb_strtoupper($locale) }}]</label>
+                            </div>
                         </div>
                         <div class="col-md-6 col-12">
-                            <select class="form-select" name="{{ $locale }}[category]" id="category">
-                                <option selected disabled>Categoría [{{ Str::upper($locale) }}]</option>
-                                @foreach ($categoryOptions as $category)
-                                    <option value="{{ $category }}" {{ $category === $product->translate($locale)->category ? 'selected' : '' }}>
-                                        {{ $category }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select class="form-select" name="category_id" id="category">
+                                    <option selected disabled>Categoría</option>
+                                    @foreach ($categoryOptions as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id === $product->productCategory->id ? 'selected' : '' }}>
+                                            {{ $category->translate($locale) ? $category->translate($locale)->name : $category->translate('en')->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <label>Categoría [{{ mb_strtoupper($locale) }}]</label>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3">

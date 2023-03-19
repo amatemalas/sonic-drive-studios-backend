@@ -102,7 +102,7 @@ class ProductController extends Controller
     {
         return view('backend.pages.products.edit', [
             'product' => $product,
-            'categoryOptions' => $this->getCategoryOptions(),
+            'categoryOptions' => ProductCategory::all(),
         ]);
     }
 

@@ -20,7 +20,7 @@ class ContactController extends Controller
     public function pagination(Request $request, $page)
     {
         $user = auth()->user();
-        $contacts = Contact::paginate($this->pagination, ['*'], 'page', $page);
+        $contacts = Contact::orderByDesc('created_at')->paginate($this->pagination, ['*'], 'page', $page);
 
         return view('backend.pages.contacts.index', compact('user', 'contacts'))->render();
     }
@@ -33,7 +33,7 @@ class ContactController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $contacts = Contact::paginate($this->pagination);
+        $contacts = Contact::orderByDesc('created_at')->paginate($this->pagination);
 
         return view('backend.pages.contacts.index', compact('user', 'contacts'));
     }

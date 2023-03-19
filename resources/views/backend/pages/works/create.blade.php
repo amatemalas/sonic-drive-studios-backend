@@ -24,35 +24,56 @@
         @csrf
         <div class="row mb-3">
             <div class="col-md-6 col-12">
-                <input class="form-control" placeholder="Título" type="text" name="name" value="{{ old('name') }}">
+                <div class="form-floating">
+                    <input class="form-control" placeholder="Título" type="text" name="name" value="{{ old('name') }}">
+                    <label>Título</label>
+                </div>
             </div>
             <div class="col-md-6 col-12">
-                <select class="form-select" name="type" id="type">
-                    <option value="" disabled selected>Tipo</option>
-                    <option value="Single">Single</option>
-                    <option value="EP">EP</option>
-                    <option value="LP">LP</option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6 col-12">
-                <input class="form-control" placeholder="Banda" type="text" name="band" value="{{ old('band') }}">
-            </div>
-            <div class="col-md-6 col-12">
-                <input class="form-control" placeholder="Año" type="text" name="year" value="{{ old('year') }}">
+                <div class="form-floating">
+                    <select class="form-select" name="type" id="type">
+                        <option value="" disabled selected>Tipo</option>
+                        <option value="Single">Single</option>
+                        <option value="EP">EP</option>
+                        <option value="LP">LP</option>
+                    </select>
+                    <label>Tipo</label>
+                </div>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6 col-12">
-                <input class="form-control" placeholder="Género" type="text" name="genre" value="{{ old('genre') }}">
+                <div class="form-floating">
+                    <input class="form-control" placeholder="Banda" type="text" name="band" value="{{ old('band') }}">
+                    <label>Banda</label>
+                </div>
             </div>
             <div class="col-md-6 col-12">
-                <input class="form-control" placeholder="Link Spotify" type="text" name="spotify" value="{{ old('spotify') }}">
+                <div class="form-floating">
+                    <input class="form-control" placeholder="Año" type="text" name="year" value="{{ old('year') }}">
+                    <label>Año</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6 col-12">
+                <div class="form-floating">
+                    <input class="form-control" placeholder="Género" type="text" name="genre" value="{{ old('genre') }}">
+                    <label>Género</label>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="form-floating">
+                    <input class="form-control" placeholder="Spotify URI" type="text" name="spotify" value="{{ old('spotify') }}">
+                    <label>Spotify URI</label>
+                </div>
             </div>
         </div>
         <div class="mb-3">
-            <textarea class="form-control" placeholder="Descripción" type="text" name="description">{{ old('description') }}</textarea>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Descripción" type="text" name="description">{{ old('description') }}</textarea>
+                <label>Descripción</label>
+            </div>
         </div>
         <div class="mb-3">
             <input class="form-control mb-3" value="{{ old('image') }}" type="file" name="image" id="js-image">

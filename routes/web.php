@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SongController;
 use App\Http\Controllers\Backend\WorkController;
+use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WorkController as FrontendWorkController;
 use App\Http\Controllers\ProductController as FrontendProductController;
@@ -24,12 +25,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 // FRONTEND
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/presupuesto', [HomeController::class, 'calculator'])->name('calculator');
-Route::get('/trabajos', [FrontendWorkController::class, 'index'])->name('frontend.works.index');
-Route::get('/trabajos/{work:slug}', [FrontendWorkController::class, 'show'])->name('frontend.works.show');
-Route::get('/productos', [FrontendProductController::class, 'index'])->name('frontend.products.index');
-Route::get('/productos/{product}', [FrontendProductController::class, 'show'])->name('frontend.products.show');
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/presupuesto', 'calculator')->name('calculator');
+});
+
+Route::controller(CalculatorController::class)->group(function () {
+    Route::post('/presupuesto/calculate', 'calculate')->name('calculator.calculate');
+});
+Route::controller(FrontendWorkController::class)->group(function () {
+    Route::get('/trabajos', 'index')->name('frontend.works.index');
+    Route::get('/trabajos/{work:slug}', 'show')->name('frontend.works.show');
+});
+Route::controller(FrontendProductController::class)->group(function () {
+    Route::get('/productos', 'index')->name('frontend.products.index');
+    Route::get('/productos/{product:slug}', 'show')->name('frontend.products.show');
+});
 
 // BACKEND
 Route::controller(AuthController::class)->group(function () {

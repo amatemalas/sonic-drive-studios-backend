@@ -16,6 +16,10 @@
         <div class="d-flex vh-100 main">
             @include('backend.partials.navigation')
 
+            <a class="position-absolute top-0 end-0 p-3" href="{{ route('home') }}" target="_blank">
+                <i class="fa-solid fa-right-from-bracket fa-xl"></i>
+            </a>
+
             <div class="container py-4 d-flex flex-column justify-content-center" id="request-update">
                 @yield('content')
             </div>

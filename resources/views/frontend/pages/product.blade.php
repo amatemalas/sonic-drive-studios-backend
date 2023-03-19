@@ -2,9 +2,9 @@
 @section('title',  $product->title . ' | Sonic Drive Studios')
 
 @section('content')
-    
+
     @include('frontend.partials.head', [
-        'title' => $product->title, 
+        'title' => $product->title,
         'subtitle' => $product->category,
         'image' => $product->path,
     ])
@@ -21,6 +21,7 @@
                 <p>Cantidad en stock: {{ $product->stock }}</p>
                 <h4>Descripción:</h4>
                 <div>{!! $product->description !!}</div>
+                <a class="btn btn-primary" href="#">Obtener</a>
             </div>
         </div>
     </div>
