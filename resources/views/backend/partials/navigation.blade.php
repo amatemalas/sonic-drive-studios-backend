@@ -67,7 +67,7 @@
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{ auth()->user()->path ?? "https://github.com/mdo.png" }}" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>{{ auth()->user()->name ?? 'Alex Tomàs' }}</strong>
+            <strong class="d-md-block d-none">{{ auth()->user()->name ?? 'Alex Tomàs' }}</strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
             <li><a class="dropdown-item" href="{{ route('settings') }}">Ajustes</a></li>

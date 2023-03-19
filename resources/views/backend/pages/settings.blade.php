@@ -30,6 +30,7 @@
             </div>
             <div class="col-6">
                 <a href="{{ route('user.cache.clear') }}" class="btn btn-outline-primary js-cache">Limpiar la caché</a>
+                <a href="{{ asset('images/magic.jpg') }}" class="btn btn-outline-primary js-cache">Alee</a>
             </div>
         </div>
     </form>

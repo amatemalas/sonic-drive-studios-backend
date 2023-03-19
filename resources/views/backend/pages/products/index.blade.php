@@ -56,25 +56,7 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            @if($products->lastPage() > 1)
-                <ul class="pagination">
-                    @if($products->previousPageUrl())
-                        <li class="page-item disabled">
-                            <a class="page-link" href="{{ $products->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
-                        </li>
-                    @endif
-                    @for($i=1; $i <= $products->lastPage(); $i++)
-                        <li class="page-item {{ $i == $products->currentPage() ? 'active' : '' }}">
-                            <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
-                        </li>
-                    @endfor
-                    @if($products->hasMorePages())
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $products->nextPageUrl() }}">Siguiente</a>
-                        </li>
-                    @endif
-                </ul>
-            @endif
+            @include('backend.partials.pagination', ['collection' => $products])
         </div>
     </div>
 @endsection

@@ -58,25 +58,7 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            @if($works->lastPage() > 1)
-                <ul class="pagination">
-                    @if($works->previousPageUrl())
-                        <li class="page-item disabled">
-                            <a class="page-link" href="{{ $works->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
-                        </li>
-                    @endif
-                    @for($i=1; $i <= $works->lastPage(); $i++)
-                        <li class="page-item {{ $i == $works->currentPage() ? 'active' : '' }}">
-                            <a class="page-link" href="{{ $works->url($i) }}">{{ $i }}</a>
-                        </li>
-                    @endfor
-                    @if($works->hasMorePages())
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $works->nextPageUrl() }}">Siguiente</a>
-                        </li>
-                    @endif
-                </ul>
-            @endif
+            @include('backend.partials.pagination', ['collection' => $works])
         </div>
     </div>
 @endsection

@@ -43,25 +43,7 @@
                 </tbody>
                 <tfoot></tfoot>
             </table>
-            @if($contacts->lastPage() > 1)
-                <ul class="pagination">
-                    @if($contacts->previousPageUrl())
-                        <li class="page-item disabled">
-                            <a class="page-link" href="{{ $contacts->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Anterior</a>
-                        </li>
-                    @endif
-                    @for($i=1; $i <= $contacts->lastPage(); $i++)
-                        <li class="page-item {{ $i == $contacts->currentPage() ? 'active' : '' }}">
-                            <a class="page-link" href="{{ $contacts->url($i) }}">{{ $i }}</a>
-                        </li>
-                    @endfor
-                    @if($contacts->hasMorePages())
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $contacts->nextPageUrl() }}">Siguiente</a>
-                        </li>
-                    @endif
-                </ul>
-            @endif
+            @include('backend.partials.pagination', ['collection' => $contacts])
         </div>
     </div>
 @endsection
