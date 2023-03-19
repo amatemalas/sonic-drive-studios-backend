@@ -82,7 +82,7 @@
                         @foreach ($relatedWorks as $work)
                             <div class="swiper-slide">
                                 <div class="shadow h-100">
-                                    <div class="card bg-dark border-0">
+                                    <div class="card bg-gradient border-0">
                                         <picture class="c-image c-image--100">
                                             <img class="card-image" src="{{ $work->path }}" alt="">
                                         </picture>

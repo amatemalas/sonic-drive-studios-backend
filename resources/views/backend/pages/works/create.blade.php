@@ -69,11 +69,22 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3">
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Descripción" type="text" name="description">{{ old('description') }}</textarea>
-                <label>Descripción</label>
-            </div>
+        <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+            @foreach (config()->get('translatable.locales') as $locale)
+                <li class="nav-item">
+                    <button class="nav-link {{ $loop->first ? 'active' : '' }}" id="{{ $locale }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $locale }}" type="button">{{ Str::upper($locale) }}</button>
+                </li>
+            @endforeach
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            @foreach (config()->get('translatable.locales') as $locale)
+                <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="{{ $locale }}" role="tabpanel" aria-labelledby="{{ $locale }}-tab">
+                    <div class="form-floating mb-3">
+                        <textarea class="ckeditor form-control" name="{{ $locale }}[description]">{{ old($locale . '.description') }}</textarea>
+                        <label>Descripción [{{ mb_strtoupper($locale) }}]</label>
+                    </div>
+                </div>
+            @endforeach
         </div>
         <div class="mb-3">
             <input class="form-control mb-3" value="{{ old('image') }}" type="file" name="image" id="js-image">
