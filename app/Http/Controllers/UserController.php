@@ -14,6 +14,7 @@ class UserController extends Controller
         $user = auth()->user();
 
         Artisan::call('cache:clear');
+        Artisan::call('route:cache');
 
         return redirect('settings')->with('status-message', 'Caché limpiada correctamente')->with('status', 'success');
     }
