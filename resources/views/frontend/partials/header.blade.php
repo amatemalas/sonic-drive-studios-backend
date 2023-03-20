@@ -17,7 +17,7 @@
                     <a class="ms-2" href="https://twitter.com/StudiosDrive" target="_blank">
                         <i class="fa-brands fa-twitter fa-lg"></i>
                     </a>
-                    <a class="ms-2" href="wa.link/fiwf6s" target="_blank">
+                    <a class="ms-2" href="https://wa.link/fiwf6s" target="_blank">
                         <i class="fa-brands fa-whatsapp fa-lg"></i>
                     </a>
                     <a class="ms-2" href="#" target="_blank">
@@ -45,6 +45,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ url()->current() === route('frontend.works.index') ? 'active' : '' }}" href="{{ route('frontend.works.index') }}">Trabajos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ url()->current() === route('calculator') ? 'active' : '' }}" href="{{ route('calculator') }}">Presupuesto</a>
+                    </li>
                     <li class="nav-item ms-3 d-lg-block d-none">
                         <a class="navbar-brand" href="{{ route('home') }}">
                             <img width="120" src="{{ asset('images/logo-white-3.png') }}" alt="">
@@ -54,10 +57,12 @@
                         <a class="nav-link {{ url()->current() === route('frontend.products.index') ? 'active' : '' }}" href="{{ route('frontend.products.index') }}">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link {{ url()->current() === route('about') ? 'active' : '' }}" href="{{ route('about') }}">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ url()->current() === route('frontend.contact.index') ? 'active' : '' }}" href="{{ route('frontend.contact.index') }}">Contacto</a>
                     </li>
                 </ul>
-                
             </div>
         </div>
     </div>

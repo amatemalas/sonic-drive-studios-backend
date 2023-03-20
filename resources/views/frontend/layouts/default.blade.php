@@ -27,7 +27,8 @@
 
         <script>
             AOS.init({
-                duration: 900
+                duration: 900,
+                disable: 'mobile',
             });
         </script>
     </body>

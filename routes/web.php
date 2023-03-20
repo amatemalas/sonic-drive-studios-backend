@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SongController;
 use App\Http\Controllers\Backend\WorkController;
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\ContactController as FrontendContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WorkController as FrontendWorkController;
 use App\Http\Controllers\ProductController as FrontendProductController;
@@ -29,6 +30,14 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/presupuesto', 'calculator')->name('calculator');
 });
+
+Route::controller(FrontendContactController::class)->group(function () {
+    Route::get('/contacto', 'index')->name('frontend.contact.index');
+});
+
+Route::get('about', function () {
+    return view('frontend.pages.about');
+})->name('about');
 
 Route::controller(CalculatorController::class)->group(function () {
     Route::post('/presupuesto/calculate', 'calculate')->name('calculator.calculate');

@@ -5,7 +5,7 @@
 
     @include('frontend.partials.head', [
         'title' => $product->title,
-        'subtitle' => $product->category,
+        'subtitle' => $product->productCategory->name,
         'image' => $product->path,
     ])
 
@@ -16,12 +16,11 @@
             </div>
             <div class="col-md-9">
                 <h2 class="text-primary">{{ $product->title }}</h2>
-                <h4 class="text-muted">{{ $product->category }}</h4>
+                <h4 class="text-muted">{{ $product->productCategory->name }}</h4>
                 <div class="badge badge-primary bg-primary fs-5 fw-normal mb-3">{{ $product->price }} €</div>
                 <p>Cantidad en stock: {{ $product->stock }}</p>
-                <h4>Descripción:</h4>
                 <div>{!! $product->description !!}</div>
-                <a class="btn btn-primary" href="#">Obtener</a>
+                <a class="btn btn-primary disabled" href="#" disabled>Obtener</a>
             </div>
         </div>
     </div>
