@@ -13,7 +13,7 @@ class CalculatorController extends Controller
         try {
             $data = $request->all();
 
-            $songPrice = 350;
+            $songPrice = 450;
             $total = $data['songs'] * $songPrice;
 
             if ($total === 0) {

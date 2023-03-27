@@ -35,9 +35,17 @@ Route::controller(FrontendContactController::class)->group(function () {
     Route::get('/contacto', 'index')->name('frontend.contact.index');
 });
 
-Route::get('about', function () {
+Route::get('nosotros', function () {
     return view('frontend.pages.about');
 })->name('about');
+
+Route::get('cookies', function () {
+    return view('frontend.pages.cookies');
+})->name('cookies');
+
+Route::get('privacidad', function () {
+    return view('frontend.pages.privacy');
+})->name('privacy');
 
 Route::controller(CalculatorController::class)->group(function () {
     Route::post('/presupuesto/calculate', 'calculate')->name('calculator.calculate');

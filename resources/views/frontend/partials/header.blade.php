@@ -11,7 +11,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="https://www.instagram.com/sonicdrivestudios/" target="_blank">
+                    <a class="ms-2" href="https://www.instagram.com/sonicdrivestudios/" target="_blank">
                         <i class="fa-brands fa-instagram fa-lg"></i>
                     </a>
                     <a class="ms-2" href="https://twitter.com/StudiosDrive" target="_blank">
@@ -33,7 +33,7 @@
             <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
                 <img width="120" src="{{ asset('images/logo-white-3.png') }}" alt="">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
             </button>

@@ -44,11 +44,11 @@
                     </select>
                 </div>
             </div>
-            <div class="d-flex justify-content-between mt-5">
-                <div class="js-total badge bg-primary fs-4 fw-normal">
+            <div class="d-flex flex-md-row flex-column justify-content-between mt-5">
+                <div class="js-total badge bg-primary fs-4 fw-normal mb-3">
                     Total estimado: ~<span id="estimation">0</span> €
                 </div>
-                <button class="btn btn-primary" type="submit">Enviar mi presupuesto</button>
+                <button class="btn btn-primary mb-3" type="submit">Calcular mi presupuesto</button>
             </div>
         </form>
     </div>

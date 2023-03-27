@@ -43,3 +43,23 @@
 .z-index-front {
     z-index: 1 !important;
 }
+
+.legal {
+    h3 {
+        color: var(--bs-primary);
+    }
+    p {
+        margin-bottom: 30px;
+    }
+}
+
+.dropdown-menu {
+    transition: all .5s ease;
+}
+
+.dropdown-item {
+    transition: all .5s ease;
+    &:hover {
+        background: var(--bs-primary) !important;
+    }
+}

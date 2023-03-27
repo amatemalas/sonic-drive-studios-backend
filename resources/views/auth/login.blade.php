@@ -3,7 +3,7 @@
 @section('title', 'Login | Área privada')
 
 @section('content')
-    <img class="w-50 mb-5" src="{{ asset('images/new-logo-white.png') }}" alt="">
+    <img class="w-25 mb-5" src="{{ asset('images/logo-white-3.png') }}" alt="">
     @if (session('status-message'))
         <div class="alert alert-{{session('status')}}">
             {{ session('status-message') }}

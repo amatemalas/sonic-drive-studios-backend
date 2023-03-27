@@ -31,9 +31,9 @@
             <div>
                 <a class="btn btn-link text-decoration-none text-white" href="{{ route('home') }}">Inicio</a>
                 ·
-                <a class="btn btn-link text-decoration-none text-white" href="#">Política de Cookies</a>
+                <a class="btn btn-link text-decoration-none text-white" href="{{ route('cookies') }}">Política de Cookies</a>
                 ·
-                <a class="btn btn-link text-decoration-none text-white" href="#">Política de privacidad</a>
+                <a class="btn btn-link text-decoration-none text-white" href="{{ route('privacy') }}">Política de privacidad</a>
                 ·
                 <a class="btn btn-link text-decoration-none text-white" href="#">Aviso Legal</a>
             </div>
