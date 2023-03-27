@@ -1,6 +1,6 @@
 @extends('backend.layouts.default')
 
-@section('title', 'Contactos')
+@section('title', 'Trabajos | Área privada')
 
 @section('content')
     <div class="">

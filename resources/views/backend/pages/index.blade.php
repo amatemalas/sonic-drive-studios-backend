@@ -1,6 +1,6 @@
 @extends('backend.layouts.default')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard | Área privada')
 
 @section('content')
     <div class="text-center">
