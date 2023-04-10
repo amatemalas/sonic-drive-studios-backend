@@ -84,10 +84,10 @@
                         <label>Descripción [{{ mb_strtoupper($locale) }}]</label>
                     </div>
                 </div>
-            @endforeach
+            @endforeach 
         </div>
         <div class="mb-3">
-            <input class="form-control mb-3" value="{{ old('image') }}" type="file" name="image" id="js-image">
+            <input class="form-control mb-3" value="{{ old('image') }}" type="file" name="image" id="js-image" required>
         </div>
         <input class="btn btn-primary" type="submit" value="Crear">
         <a href="{{ route('works.index') }}" class="btn btn-outline-primary">Atrás</a>

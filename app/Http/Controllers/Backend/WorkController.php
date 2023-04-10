@@ -59,7 +59,7 @@ class WorkController extends Controller
                 $data['image'] = $request->file('image')->store('public');
             }
 
-            $data['slug'] = str()->slug($data['title']);
+            $data['slug'] = str()->slug($data['name']);
 
             $work = Work::create($data);
 

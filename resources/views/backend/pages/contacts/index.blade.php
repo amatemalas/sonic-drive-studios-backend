@@ -26,14 +26,15 @@
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->created_at }}</td>
                         <td>
-                            <a href="{{ route('contacts.show',['contact' => $contact->id]) }}" class="btn btn-icon waves-effect waves-light">
+                            <a href="{{ route('contacts.show', ['contact' => $contact->id]) }}" class="btn btn-icon waves-effect waves-light">
                                 <span class="fa fa-eye"></span>
                             </a>
 
-                            <form action="{{route('contacts.destroy', ['contact' => $contact->id])}}"
+                            <form action="{{ route('contacts.destroy', ['contact' => $contact->id]) }}"
                                   class="d-inline" data-element="el usuario">
+                                @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-icon waves-effect waves-light js-submit-deleterow">
+                                <button type="submit" class="btn btn-icon waves-effect waves-light js-submit-deleterow" data-action="{{ route('contacts.destroy', ['contact' => $contact->id]) }}" data-token="{{ csrf_token() }}">
                                     <span class="fa fa-trash"></span>
                                 </button>
                             </form>
@@ -60,6 +61,25 @@
                     $('body').html(response);
                 },
             });
+        });
+
+        $('.js-submit-deleterow').click(function (e) {
+            e.preventDefault();
+            const result = confirm("Do you really want to delete record?");
+            
+            if (result) {
+                $.ajax({
+                    url: $(this).data('action'),
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $(this).data('token')
+                    },
+                    complete: function(response) {
+                        window.location.reload();
+                    },
+                });
+            }
+            
         });
     </script>
 @endpush

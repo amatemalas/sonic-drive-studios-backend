@@ -33,6 +33,7 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::controller(FrontendContactController::class)->group(function () {
     Route::get('/contacto', 'index')->name('frontend.contact.index');
+    Route::post('/contacto/store', 'store')->name('frontend.contact.store');
 });
 
 Route::get('nosotros', function () {

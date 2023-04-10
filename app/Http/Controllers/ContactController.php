@@ -6,6 +6,7 @@ use App\Models\Contact;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -37,10 +38,25 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        $field = null;
         try {
             DB::beginTransaction();
 
-            $data = $request->all();
+            $data = $request->except('legal');
+
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'surname' => 'required',
+                'email' => 'required|email',
+                'subject' => 'required',
+                'legal' => 'accepted'
+            ]);
+        
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                $field = array_keys($errors->messages())[0];
+                throw new \Exception('El formulario contiene errores');
+            }
 
             $contact = Contact::create($data);
 
@@ -48,14 +64,15 @@ class ContactController extends Controller
             return response()->json([
                 'code' => 200,
                 'status' => 'ok',
-                'message' => __('Contact ok'),
+                'message' => 'Formulario enviado correctamente',
             ]);
         } catch (Exception $e) {
             DB::rollBack();
             return response()->json([
                 'code' => 500,
                 'status' => 'ko',
-                'message' => __('Contact ko'),
+                'message' => $e->getMessage(),
+                'field' => $field,
             ]);
         }
     }

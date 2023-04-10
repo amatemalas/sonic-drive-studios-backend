@@ -115,7 +115,7 @@ class ContactController extends Controller
 
             DB::commit();
             return redirect('contacts.index')
-                ->with('status-message', 'Trabajo creado')->with('status', 'success');
+                ->with('status-message', 'Contacto borrado')->with('status', 'success');
         } catch (\Throwable $e) {
             DB::rollBack();
             return redirect('contacts.index')
