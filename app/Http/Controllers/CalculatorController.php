@@ -16,22 +16,23 @@ class CalculatorController extends Controller
             $songPrice = 450;
             $total = $data['songs'] * $songPrice;
 
-            if ($total === 0) {
-                $total = 10 * $songPrice;
-            }
-
             DB::beginTransaction();
-            $contact = Contact::updateOrCreate(['email' => $data['email']], [
+            $contact = Contact::create([
                 'name' => $data['name'],
                 'surname' => $data['surname'],
                 'email' => $data['email'],
                 'songs' => $data['songs'],
                 'subject' => 'Presupuesto de trabajo',
                 'body' => 'Enviado desde el calculador de trabajos de la web de Sonic Drive Studios',
-                'instruments' => $data['instruments'],
+                'members' => $data['members'],
                 'estimation' => $total,
+                'band' => $data['band'],
+                'genre' => $data['genre'],
                 'is_read' => 0,
             ]);
+
+            // Mail ?
+
             DB::commit();
 
             return $total;

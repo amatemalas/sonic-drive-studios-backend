@@ -22,33 +22,40 @@
                     <input type="text" class="form-control" id="surname" name="surname" placeholder="Doe" required>
                 </div>
                 <div class="col-md-6 mb-3">
+                    <label for="band" class="form-label">{{ __('Nombre de la banda') }}</label>
+                    <input type="text" class="form-control" id="band" name="band" placeholder="Metallica" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="genre" class="form-label">{{ __('Género') }}</label>
+                    <input type="text" class="form-control" id="genre" name="genre" placeholder="Metal" required>
+                </div>
+                <div class="col-md-6 mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="something@example.test" required>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-3">
                     <label for="songs" class="form-label">{{ __('Número de canciones') }}</label>
                     <select class="form-select js-calculate" name="songs" id="songs">
-                        @foreach (range(1, 9) as $i)
+                        @foreach (range(1, 15) as $i)
                             <option value="{{ $i }}">{{ $i }}</option>
                         @endforeach
-                        <option value="0">+10</option>
+                        <option value="0">+15</option>
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-3">
-                    <label for="instruments" class="form-label">{{ __('Número de instrumentos') }}</label>
-                    <select class="form-select js-calculate" name="instruments" id="instruments">
-                        @foreach (range(1, 9) as $i)
+                    <label for="members" class="form-label">{{ __('Número de miembros banda') }}</label>
+                    <select class="form-select js-calculate" name="members" id="members">
+                        @foreach (range(1, 8) as $i)
                             <option value="{{ $i }}">{{ $i }}</option>
                         @endforeach
-                        <option value="0">+10</option>
                     </select>
                 </div>
             </div>
             <div class="d-flex flex-md-row flex-column justify-content-between mt-5">
+                <button class="btn btn-primary mb-3" type="submit">{{ __('Calcular mi presupuesto') }}</button>
                 <div class="js-total badge bg-primary fs-4 fw-normal mb-3">
-                    Total estimado: ~<span id="estimation">0</span> €
+                    {{ __('Total estimado') }}: ~<span id="estimation">0</span> €
                 </div>
-                <button class="btn btn-primary mb-3" type="submit">Calcular mi presupuesto</button>
             </div>
         </form>
     </div>
@@ -63,6 +70,7 @@
 
 @push('scripts')
     <script>
+        $('.js-total').hide();
         $('#calculateForm').submit(function (e) {
             e.preventDefault();
             var data = new FormData(this);
@@ -76,6 +84,8 @@
                     'X-CSRF-TOKEN': $('input[name="_token"]').val()
                 },
                 success: function(response) {
+                    $('#calculateForm')[0].reset();
+                    $('.js-total').fadeIn();
                     $('#estimation').html(response);
                 },
             });

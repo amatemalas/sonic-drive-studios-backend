@@ -56,6 +56,22 @@
                     <label>Motivo de consulta</label>
                 </div>
             </div>
+            @if ($contact->band)
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input class="form-control" readonly type="text" value="{{ $contact->band }}">
+                        <label>Banda</label>
+                    </div>
+                </div>
+            @endif
+            @if ($contact->genre)
+                <div class="col-md-6 mb-3">
+                    <div class="form-floating">
+                        <input class="form-control" readonly type="text" value="{{ $contact->genre }}">
+                        <label>Género</label>
+                    </div>
+                </div>
+            @endif
             @if ($contact->songs !== null)
                 <div class="col-lg-3 col-md-6 mb-3">
                     <div class="form-floating">
@@ -64,11 +80,11 @@
                     </div>
                 </div>
             @endif
-            @if ($contact->instruments)    
+            @if ($contact->members)    
                 <div class="col-lg-3 col-md-6 mb-3">
                     <div class="form-floating">
-                        <input class="form-control" readonly type="text" value="{{ $contact->instruments }}">
-                        <label>Núm. instrumentos</label>
+                        <input class="form-control" readonly type="text" value="{{ $contact->members }}">
+                        <label>Núm. miembros banda</label>
                     </div>
                 </div>
             @endif
