@@ -6,28 +6,28 @@
             </a>
         </div>
         <ul class="list-unstyled d-flex justify-content-center my-4">
-            <li class="mx-4 p-2 btn btn-secondary rounded-circle">
-                <a class="text-white" href="https://www.instagram.com/sonicdrivestudios/" target="_blank">
+            <li class="mx-2 p-2 btn btn-secondary rounded-circle">
+                <a class="text-white d-inline-block align-middle" href="https://www.instagram.com/sonicdrivestudios/" target="_blank">
                     <i class="fa-brands fa-fw fa-instagram fa-lg"></i>
                 </a>
             </li>
-            <li class="mx-4 p-2 btn btn-secondary rounded-circle">
-                <a class="text-white" href="https://twitter.com/StudiosDrive" target="_blank">
+            <li class="mx-2 p-2 btn btn-secondary rounded-circle">
+                <a class="text-white d-inline-block align-middle" href="https://twitter.com/StudiosDrive" target="_blank">
                     <i class="fa-brands fa-fw fa-twitter fa-lg"></i>
                 </a>
             </li>
-            <li class="mx-4 p-2 btn btn-secondary rounded-circle">
-                <a class="text-white" href="https://wa.link/fiwf6s" target="_blank">
+            <li class="mx-2 p-2 btn btn-secondary rounded-circle">
+                <a class="text-white d-inline-block align-middle" href="https://wa.link/fiwf6s" target="_blank">
                     <i class="fa-brands fa-fw fa-whatsapp fa-lg"></i>
                 </a>
             </li>
-            <li class="mx-4 p-2 btn btn-secondary rounded-circle">
-                <a class="text-white" href="#" target="_blank">
+            <li class="mx-2 p-2 btn btn-secondary rounded-circle">
+                <a class="text-white d-inline-block align-middle" href="#" target="_blank">
                     <i class="fa-brands fa-fw fa-youtube fa-lg"></i>
                 </a>
             </li>
         </ul>
-        <div class="d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center text-center">
             <div>
                 <a class="btn btn-link text-decoration-none text-white" href="{{ route('home') }}">Inicio</a>
                 ·
