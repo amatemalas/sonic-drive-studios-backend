@@ -14,9 +14,11 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works = Work::all();
+        $works = Work::orderByDesc('year')->orderBy('name')->get();
 
-        return view('frontend.pages.works', compact('works'));
+        $years = $works->pluck('year')->toArray();
+
+        return view('frontend.pages.works', compact('works', 'years'));
     }
 
     /**
