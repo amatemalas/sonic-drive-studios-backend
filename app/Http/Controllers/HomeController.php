@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $works = Work::all();
+        $works = Work::orderByDesc('year')->orderBy('name')->get();
         return view('frontend.pages.home', compact('works'));
     }
 

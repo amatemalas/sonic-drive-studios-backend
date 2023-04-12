@@ -1,7 +1,7 @@
 <section class="container-fluid py-5" data-aos="zoom-in">
     <div class="container">
         <div class="d-lg-flex justify-content-between align-items-center">
-            <h3 class="display-6 mb-lg-0 mb-3 text-primary">Trabajos realizados</h3>
+            <h3 class="display-6 mb-lg-0 mb-3 text-primary">Últimos trabajos</h3>
             <div class="swiper-buttons">
                 <button class="js-carousel-button-prev text-light mx-2">
                     <i class="fa-solid fa-arrow-left fa-xl"></i>
@@ -14,7 +14,7 @@
     </div>
     <div class="swiper js-carousel">
         <div class="swiper-wrapper">
-            @foreach ($works as $work)
+            @foreach ($works->slice(0, 9) as $work)
                 <div class="swiper-slide">
                     <div class="card my-5 mx-3 bg-gradient border-0 shadow">
                         <div class="row g-0">
