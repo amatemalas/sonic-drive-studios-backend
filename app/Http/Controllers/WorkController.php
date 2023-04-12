@@ -16,7 +16,7 @@ class WorkController extends Controller
     {
         $works = Work::orderByDesc('year')->orderBy('name')->get();
 
-        $years = $works->pluck('year')->toArray();
+        $years = Work::select('year')->distinct()->orderByDesc('year')->pluck('year')->toArray();
 
         return view('frontend.pages.works', compact('works', 'years'));
     }
